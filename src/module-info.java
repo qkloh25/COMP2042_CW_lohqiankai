@@ -5,4 +5,5 @@ module COMP2042.CW.lohqiankai {
 
     opens main;
     opens main.LeaderBoard;
+    opens main.MainMenu;
 }

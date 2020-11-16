@@ -3,9 +3,11 @@ package main.World;
 import java.io.File;
 
 import javafx.animation.AnimationTimer;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Stage;
 import main.Actors.*;
 
 public class GameStage extends World {
@@ -17,7 +19,7 @@ public class GameStage extends World {
 		
 	}
 	
-	public GameStage() {
+	public GameStage(Stage primaryStage) {
 		//Obstacle obstacle = new Obstacle("file:src/p4_group_8_repo/truck1Right.png", 25, 25, 3);
 		//Obstacle obstacle1 = new Obstacle("file:src/p4_group_8_repo/truck2Right.png", 100, 100,2 );
 		//Obstacle obstacle2 = new Obstacle("file:src/p4_group_8_repo/truck1Right.png",0,  150, 1);
@@ -94,7 +96,11 @@ public class GameStage extends World {
 //		});
 //		mediaPlayer.play();
 	}
-	
+
+	public Scene setupGameScene(){
+
+		return new Scene(this,565,800);
+	}
 	public void playMusic() {
 		String musicFile = "src/audios/MainTheme (loop).mp3";
 		Media sound = new Media(new File(musicFile).toURI().toString());
@@ -102,6 +108,7 @@ public class GameStage extends World {
 		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 	    mediaPlayer.play();
 	}
+
 	public void stopMusic() {
 		mediaPlayer.stop();
 	}
@@ -117,7 +124,7 @@ public class GameStage extends World {
 				if (frog.getStop()) {
 					System.out.print("STOPP:");
 					stopMusic();
-					stop();
+					STOP();
 					Alert alert = new Alert(Alert.AlertType.INFORMATION);
 					alert.setTitle("You Have Won The Game!");
 					alert.setHeaderText("Your High Score: "+frog.getPoints()+"!");
@@ -128,12 +135,12 @@ public class GameStage extends World {
 		};
 	}
 	public void start() {
-		super.start();
 		createTimer();
+		super.start();
 		timer.start();
 	}
 
-	public void stop() {
+	public void STOP() {
 		super.stop();
 		timer.stop();
 	}

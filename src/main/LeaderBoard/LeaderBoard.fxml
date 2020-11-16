@@ -34,7 +34,7 @@
                   <Font name="System Bold Italic" size="13.0" />
                </font>
             </Label>
-            <Label text="Time" underline="true">
+            <Label text="Date" underline="true">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -64,7 +64,7 @@
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="230.0" text="ROSE FOLD">
+                  <Label fx:id="name1" alignment="CENTER" prefWidth="230.0" text="ROSE FOLD">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -75,7 +75,7 @@
                         <Font name="Weibei SC Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                  <Label fx:id="date1" alignment="CENTER" prefWidth="120.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -83,7 +83,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="800">
+                  <Label fx:id="score1" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="800">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -91,7 +91,7 @@
                         <Insets left="20.0" right="20.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="Times New Roman Bold" size="13.0" />
+                        <Font name="Times New Roman Bold" size="19.0" />
                      </font>
                   </Label>
                </children>
@@ -106,7 +106,7 @@
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="230.0" text="CHECKMATE">
+                  <Label fx:id="name2" alignment="CENTER" prefWidth="230.0" text="CHECKMATE">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -117,7 +117,7 @@
                         <Font name="Weibei SC Bold" size="19.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                  <Label fx:id="date2" alignment="CENTER" prefWidth="120.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -125,7 +125,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score2" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -133,7 +133,7 @@
                         <Insets left="20.0" right="20.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="Times New Roman Bold" size="13.0" />
+                        <Font name="Times New Roman Bold" size="17.0" />
                      </font>
                   </Label>
                </children>
@@ -148,7 +148,7 @@
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="230.0" text="TRY">
+                  <Label fx:id="name3" alignment="CENTER" prefWidth="230.0" text="TRY">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -159,7 +159,7 @@
                         <Font name="Weibei SC Bold" size="17.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                  <Label fx:id="date3" alignment="CENTER" prefWidth="120.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -167,7 +167,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score3" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -175,7 +175,7 @@
                         <Insets left="20.0" right="20.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="Times New Roman Bold" size="13.0" />
+                        <Font name="Times New Roman Bold" size="15.0" />
                      </font>
                   </Label>
                </children>
@@ -190,7 +190,7 @@
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="230.0" text="The fourth idiot">
+                  <Label fx:id="name4" alignment="CENTER" prefWidth="230.0" text="The fourth idiot">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -201,7 +201,7 @@
                         <Font name="Weibei SC Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                  <Label fx:id="date4" alignment="CENTER" prefWidth="120.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -209,7 +209,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score4" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -232,7 +232,7 @@
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                  <Label fx:id="name5" alignment="CENTER" prefWidth="230.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -243,7 +243,7 @@
                         <Font name="Weibei SC Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                  <Label fx:id="date5" alignment="CENTER" prefWidth="120.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -251,7 +251,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score5" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -274,7 +274,7 @@
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                  <Label fx:id="name6" alignment="CENTER" prefWidth="230.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -285,7 +285,7 @@
                         <Font name="Weibei SC Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                  <Label fx:id="date6" alignment="CENTER" prefWidth="120.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -293,7 +293,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score6" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -316,7 +316,7 @@
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                  <Label fx:id="name7" alignment="CENTER" prefWidth="230.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -327,7 +327,7 @@
                         <Font name="Weibei SC Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                  <Label fx:id="date7" alignment="CENTER" prefWidth="120.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -335,7 +335,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score7" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -358,7 +358,7 @@
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                  <Label fx:id="name8" alignment="CENTER" prefWidth="230.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -369,7 +369,7 @@
                         <Font name="Weibei SC Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                  <Label fx:id="date8" alignment="CENTER" prefWidth="120.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -377,7 +377,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score8" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -400,7 +400,7 @@
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                  <Label fx:id="name9" alignment="CENTER" prefWidth="230.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -411,7 +411,7 @@
                         <Font name="Weibei SC Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                  <Label fx:id="date9" alignment="CENTER" prefWidth="120.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -419,7 +419,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score9" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -442,7 +442,7 @@
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                  <Label fx:id="name10" alignment="CENTER" prefWidth="230.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -453,7 +453,7 @@
                         <Font name="Weibei SC Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                  <Label fx:id="date10" alignment="CENTER" prefWidth="120.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -461,7 +461,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score10" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -484,7 +484,7 @@
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                  <Label fx:id="name11" alignment="CENTER" prefWidth="230.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -495,7 +495,7 @@
                         <Font name="Weibei SC Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                  <Label fx:id="date11" alignment="CENTER" prefWidth="120.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -503,7 +503,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score11" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -526,7 +526,7 @@
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                  <Label fx:id="name12" alignment="CENTER" prefWidth="230.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -537,7 +537,7 @@
                         <Font name="Weibei SC Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                  <Label fx:id="date12" alignment="CENTER" prefWidth="120.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -545,7 +545,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score12" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -568,7 +568,7 @@
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                  <Label fx:id="name13" alignment="CENTER" prefWidth="230.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -579,7 +579,7 @@
                         <Font name="Weibei SC Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                  <Label fx:id="date13" alignment="CENTER" prefWidth="120.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -587,7 +587,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score13" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -610,7 +610,7 @@
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                  <Label fx:id="name14" alignment="CENTER" prefWidth="230.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -621,7 +621,7 @@
                         <Font name="Weibei SC Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                  <Label fx:id="date14" alignment="CENTER" prefWidth="120.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -629,7 +629,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score14" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -652,7 +652,7 @@
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                  <Label fx:id="name15" alignment="CENTER" prefWidth="230.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -663,7 +663,7 @@
                         <Font name="Weibei SC Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                  <Label fx:id="date15" alignment="CENTER" prefWidth="120.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -671,7 +671,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score15" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -690,10 +690,16 @@
             <Font name="Weibei SC Bold" size="35.0" />
          </font>
       </Label>
-      <ImageView fitHeight="37.0" fitWidth="69.0" layoutX="20.0" layoutY="25.0" onMouseClicked="#toMainMenu" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../pics/backicon.png" />
-         </image>
-      </ImageView>
+      <Button layoutX="20.0" layoutY="32.0" mnemonicParsing="false" onAction="#toMainMenu" prefHeight="22.0" prefWidth="80.0" style="-fx-background-color: white; -fx-background-radius: 10;" text="Back">
+         <graphic>
+            <ImageView fitHeight="19.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../pics/backicon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+
    </children>
+
 </AnchorPane>

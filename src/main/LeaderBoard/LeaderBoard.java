@@ -1,28 +1,39 @@
 package main.LeaderBoard;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class LeaderBoard {
     final private String path="src/main/LeaderBoard/LeaderBoard.csv";
     final private String tempFile = "src/main/LeaderBoard/temp.csv";
     String line = "";
-
     private static Scanner scanner;
+    public String playerNames[]= new String[15];
+    public String scores[] = new String[15];
+    public String dates[] = new String[15];
 
     public LeaderBoard(){
-        try{
-            BufferedReader br = new BufferedReader(new FileReader(path));
-            while((line = br.readLine()) != null){
-                String[] value = line.split(",");
-                System.out.println(value[1]);
-
-            }
-        }
-        catch(IOException e){
+        try {
+            loadDatafromFile();
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+    public void loadDatafromFile() throws FileNotFoundException {
+        scanner = new Scanner(new File(path));
+        scanner.useDelimiter("[,\n]");
+        int i=0;
+        Arrays.fill(playerNames,"-");
+        Arrays.fill(dates,"-");
+        Arrays.fill(scores,"-");
 
+        while (scanner.hasNext()){
+            playerNames[i] = scanner.next();
+            dates[i] = scanner.next();
+            scores[i] = scanner.next();
+            i++;
+        }
     }
 
     public void insertNewRecord(String newName, int newScore){

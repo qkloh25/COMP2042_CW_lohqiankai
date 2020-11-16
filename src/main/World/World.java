@@ -69,7 +69,6 @@ public abstract class World extends Pane {
     }
 
     public void start() {
-    	createTimer();
         timer.start();
     }
 
