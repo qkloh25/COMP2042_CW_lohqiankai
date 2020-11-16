@@ -2,7 +2,7 @@ package main.Actors;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputEvent;
-import main.Backend.World;
+import main.World.World;
 
 import java.util.ArrayList;
 

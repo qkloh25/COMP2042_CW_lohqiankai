@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="565.0" style="-fx-background-color: LIGHTBLUE;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.LeaderBoard.LeaderBoardController">
+   <children>
+      <ImageView fx:id="back" fitHeight="915.0" fitWidth="575.0" layoutX="-3.0" layoutY="-57.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../pics/City.gif" />
+         </image>
+      </ImageView>
+      <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="83.0" prefHeight="26.0" prefWidth="525.0" style="-fx-background-color: WHITE;">
+         <children>
+            <Label text="Rank" underline="true">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets left="25.0" right="35.0" />
+               </HBox.margin>
+            </Label>
+            <Label text="Player" underline="true">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets left="96.0" right="90.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </Label>
+            <Label text="Time" underline="true">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets left="73.0" right="24.0" />
+               </HBox.margin>
+            </Label>
+            <Label prefHeight="5.0" prefWidth="32.0" text="Score" underline="true">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <VBox layoutX="20.0" layoutY="117.0" prefHeight="659.0" prefWidth="525.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="54.0" opacity="0.86" prefHeight="44.0" prefWidth="525.0" style="-fx-background-color: GOLD;">
+               <children>
+                  <Label alignment="CENTER" prefWidth="15.0" text="1">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="230.0" text="ROSE FOLD">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Weibei SC Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="800">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Times New Roman Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" opacity="0.86" prefHeight="44.0" prefWidth="525.0" style="-fx-background-color: SILVER;">
+               <children>
+                  <Label alignment="CENTER" prefWidth="15.0" text="2">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="230.0" text="CHECKMATE">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Weibei SC Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Times New Roman Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="54.0" opacity="0.86" prefHeight="44.0" prefWidth="525.0" style="-fx-background-color: #cd7f32;">
+               <children>
+                  <Label alignment="CENTER" prefWidth="15.0" text="3">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="230.0" text="TRY">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Weibei SC Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Times New Roman Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="54.0" opacity="0.86" prefHeight="44.0" prefWidth="525.0" style="-fx-background-color: GREY;">
+               <children>
+                  <Label alignment="CENTER" prefWidth="15.0" text="4">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="230.0" text="The fourth idiot">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Weibei SC Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Times New Roman Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="98.0" opacity="0.86" prefHeight="44.0" prefWidth="525.0" style="-fx-background-color: GREY;">
+               <children>
+                  <Label alignment="CENTER" prefWidth="15.0" text="5">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Weibei SC Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Times New Roman Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="98.0" opacity="0.86" prefHeight="44.0" prefWidth="525.0" style="-fx-background-color: GREY;">
+               <children>
+                  <Label alignment="CENTER" prefWidth="15.0" text="6">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Weibei SC Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Times New Roman Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="98.0" opacity="0.86" prefHeight="44.0" prefWidth="525.0" style="-fx-background-color: GREY;">
+               <children>
+                  <Label alignment="CENTER" prefWidth="15.0" text="7">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Weibei SC Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Times New Roman Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="142.0" opacity="0.86" prefHeight="44.0" prefWidth="525.0" style="-fx-background-color: GREY;">
+               <children>
+                  <Label alignment="CENTER" prefWidth="15.0" text="8">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Weibei SC Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Times New Roman Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="186.0" opacity="0.86" prefHeight="44.0" prefWidth="525.0" style="-fx-background-color: GREY;">
+               <children>
+                  <Label alignment="CENTER" prefWidth="15.0" text="9">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Weibei SC Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Times New Roman Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="186.0" opacity="0.86" prefHeight="44.0" prefWidth="525.0" style="-fx-background-color: GREY;">
+               <children>
+                  <Label alignment="CENTER" prefWidth="15.0" text="10">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Weibei SC Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Times New Roman Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="142.0" opacity="0.86" prefHeight="44.0" prefWidth="525.0" style="-fx-background-color: GREY;">
+               <children>
+                  <Label alignment="CENTER" prefWidth="15.0" text="11">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Weibei SC Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Times New Roman Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="186.0" opacity="0.86" prefHeight="44.0" prefWidth="525.0" style="-fx-background-color: GREY;">
+               <children>
+                  <Label alignment="CENTER" prefWidth="15.0" text="12">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Weibei SC Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Times New Roman Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="142.0" opacity="0.86" prefHeight="44.0" prefWidth="525.0" style="-fx-background-color: GREY;">
+               <children>
+                  <Label alignment="CENTER" prefWidth="15.0" text="13">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Weibei SC Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Times New Roman Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="186.0" opacity="0.86" prefHeight="44.0" prefWidth="525.0" style="-fx-background-color: GREY;">
+               <children>
+                  <Label alignment="CENTER" prefWidth="15.0" text="14">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Weibei SC Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Times New Roman Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="274.0" opacity="0.86" prefHeight="44.0" prefWidth="525.0" style="-fx-background-color: GREY;">
+               <children>
+                  <Label alignment="CENTER" prefWidth="15.0" text="15">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="230.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Weibei SC Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefWidth="120.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Times New Roman Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children></VBox>
+      <Label alignment="CENTER" layoutX="133.0" layoutY="25.0" prefWidth="300.0" text="LEADERBOARD">
+         <font>
+            <Font name="Weibei SC Bold" size="35.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="37.0" fitWidth="69.0" layoutX="20.0" layoutY="25.0" onMouseClicked="#toMainMenu" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../pics/backicon.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

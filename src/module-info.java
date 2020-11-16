@@ -4,4 +4,5 @@ module COMP2042.CW.lohqiankai {
     requires javafx.media;
 
     opens main;
+    opens main.LeaderBoard;
 }
