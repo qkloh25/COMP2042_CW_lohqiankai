@@ -85,9 +85,6 @@ public class LeaderBoardController implements Initializable {
         score14.setText(leaderBoard.scores[13]);
         score15.setText(leaderBoard.scores[14]);
 
-
-
-
 //        for(int i =0;i<numPlayer; ) {
 //           label.setText(leaderBoard.playerNames[i]);
 //           i++;

@@ -10,14 +10,8 @@ import javafx.scene.input.KeyEvent;
 
 
 public class Animal extends Actor {
-	Image imgW1;
-	Image imgA1;
-	Image imgS1;
-	Image imgD1;
-	Image imgW2;
-	Image imgA2;
-	Image imgS2;
-	Image imgD2;
+	Image imgW1, imgA1, imgS1, imgD1, imgW2, imgA2, imgS2, imgD2;
+	Image carDeath1, carDeath2, carDeath3, carDeath4;
 	int points = 0;
 	int end = 0;
 	private boolean second = false;
@@ -45,6 +39,10 @@ public class Animal extends Actor {
 		imgA2 = new Image("file:src/pics/froggerLeftJump.png", imgSize, imgSize, true, true);
 		imgS2 = new Image("file:src/pics/froggerDownJump.png", imgSize, imgSize, true, true);
 		imgD2 = new Image("file:src/pics/froggerRightJump.png", imgSize, imgSize, true, true);
+		carDeath1 = new Image("file:src/pics/cardeath1.png", imgSize, imgSize, true, true);
+		carDeath2 = new Image("file:src/pics/cardeath2.png", imgSize, imgSize, true, true);
+		carDeath3 = new Image("file:src/pics/cardeath3.png", imgSize, imgSize, true, true);
+		carDeath4 = new Image("file:src/pics/cardeath4.png", imgSize, imgSize, true, true);
 
 		setOnKeyPressed(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event){
@@ -148,7 +146,7 @@ public class Animal extends Actor {
 
 		if (carDeath) {
 			noMove = true;
-			if ((now)% 11 ==0) {
+			if ((now)% 3 ==0) {
 				carD++;
 			}
 			if (carD==1) {
@@ -176,27 +174,27 @@ public class Animal extends Actor {
 		}
 		if (waterDeath) {
 			noMove = true;
-			if ((now)% 11 ==0) {
+			if ((now)% 3 ==0) {
 				carD++;
 			}
 			if (carD==1) {
-				setImage(new Image("file:src/pics/waterdeath1.png", imgSize,imgSize , true, true));
+				setImage(carDeath1);
 			}
 			if (carD==2) {
-				setImage(new Image("file:src/pics/waterdeath2.png", imgSize,imgSize , true, true));
+				setImage(carDeath2);
 			}
 			if (carD==3) {
-				setImage(new Image("file:src/pics/waterdeath3.png", imgSize,imgSize , true, true));
+				setImage(carDeath3);
 			}
 			if (carD == 4) {
-				setImage(new Image("file:src/pics/waterdeath4.png", imgSize,imgSize , true, true));
+				setImage(carDeath4);
 			}
 			if (carD == 5) {
 				setX(300);
 				setY(679.8+movement);
 				waterDeath = false;
 				carD = 0;
-				setImage(new Image("file:src/pics/froggerUp.png", imgSize, imgSize, true, true));
+				setImage(imgW1);
 				noMove = false;
 				if (points>50) {
 					points-=50;

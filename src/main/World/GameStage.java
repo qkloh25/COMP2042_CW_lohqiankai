@@ -1,33 +1,45 @@
 package main.World;
 
 import java.io.File;
+import java.util.Optional;
 
+import java.time.LocalDate;
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import main.Actors.*;
+import main.LeaderBoard.LeaderBoard;
+import main.Main;
+import main.MainMenu.MainMenu;
 
 public class GameStage extends World {
 	AnimationTimer timer;
 	MediaPlayer mediaPlayer;
 	Animal frog;
+	LeaderBoard leaderBoard;
+	MainMenu mainMenu = Main.mainMenu;
+	Stage primaryStage;
 	@Override
 	public void act(long now) {
 		
 	}
 	
 	public GameStage(Stage primaryStage) {
+		this.primaryStage = primaryStage;
 		//Obstacle obstacle = new Obstacle("file:src/p4_group_8_repo/truck1Right.png", 25, 25, 3);
 		//Obstacle obstacle1 = new Obstacle("file:src/p4_group_8_repo/truck2Right.png", 100, 100,2 );
 		//Obstacle obstacle2 = new Obstacle("file:src/p4_group_8_repo/truck1Right.png",0,  150, 1);
 		BackgroundImage froggerback = new BackgroundImage("file:src/pics/iKogsKW.png");
 		add(froggerback);
-		add(new Log("file:src/pics/log3.png", 135, 0, 160, 0.75));
-		add(new Log("file:src/pics/log3.png", 135, 220, 160, 0.75));
-		add(new Log("file:src/pics/log3.png", 135, 440, 160, 0.75));
+		add(new Log("file:src/pics/log3.png", 135, 0, 160, 5));
+		add(new Log("file:src/pics/log3.png", 135, 220, 160, 5));
+		add(new Log("file:src/pics/log3.png", 135, 440, 160, 5));
 		//add(new Log("file:src/p4_group_8_repo/log3.png", 150, 0, 166, 0.75));
 		add(new Log("file:src/pics/logs.png", 270, 0, 260, -2));
 		add(new Log("file:src/pics/logs.png", 270, 400, 260, -2));
@@ -68,9 +80,9 @@ public class GameStage extends World {
 		add(new End(11 + 120 + 120 + 120 + 120,96));
 		frog = new Animal("file:src/pics/froggerUp.png");
 		add(frog);
-		add(new Obstacle("file:src/pics/truck1"+"Right.png", 0, 655, 1, 110, 110));
-		add(new Obstacle("file:src/pics/truck1"+"Right.png", 300, 655, 1, 110, 110));
-		add(new Obstacle("file:src/pics/truck1"+"Right.png", 600, 655, 1, 110, 110));
+		add(new Obstacle("file:src/pics/truck1"+"Right.png", 0, 655, 5, 110, 110));
+		add(new Obstacle("file:src/pics/truck1"+"Right.png", 300, 655, 5, 110, 110));
+		add(new Obstacle("file:src/pics/truck1"+"Right.png", 600, 655, 5, 110, 110));
 		//add(new Obstacle("file:src/p4_group_8_repo/truck1"+"Right.png", 720, 649, 1, 120, 120));
 		add(new Obstacle("file:src/pics/car1Left.png", 100, 605, -1, 50, 50));
 		add(new Obstacle("file:src/pics/car1Left.png", 250, 605, -1, 50, 50));
@@ -125,12 +137,18 @@ public class GameStage extends World {
 					System.out.print("STOPP:");
 					stopMusic();
 					STOP();
-					Alert alert = new Alert(Alert.AlertType.INFORMATION);
-					alert.setTitle("You Have Won The Game!");
-					alert.setHeaderText("Your High Score: "+frog.getPoints()+"!");
-					alert.setContentText("Highest Possible Score: 800");
-					alert.show();
+					Platform.runLater(()->{
+						popupResult();
+						toMainMenu();
+					});
+
+//					Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//					alert.setTitle("You Have Won The Game!");
+//					alert.setHeaderText("Your High Score: "+frog.getPoints()+"!");
+//					alert.setContentText("Highest Possible Score: 800");
+//					alert.show();
 				}
+
 			}
 		};
 	}
@@ -144,6 +162,25 @@ public class GameStage extends World {
 		super.stop();
 		timer.stop();
 	}
+
+	public void popupResult(){
+		TextInputDialog inputDialog = new TextInputDialog("name");
+		inputDialog.setTitle("Congratulation!");
+		inputDialog.setHeaderText("Let's see if you in the leaderboard!");
+		inputDialog.setContentText("Enter your player name:");
+		Optional<String> result = inputDialog.showAndWait();
+
+
+		leaderBoard = new LeaderBoard();
+		leaderBoard.insertNewRecord(result.get(), "12/10/2020" ,frog.getPoints());
+
+	}
+
+	public void toMainMenu(){
+		Scene mainScene = mainMenu.setupMainScene();
+		primaryStage.setScene(mainScene);
+	}
+
 	public void setNumber(int n) {
 		int shift = 0;
 		while (n > 0) {

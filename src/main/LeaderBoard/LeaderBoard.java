@@ -36,12 +36,14 @@ public class LeaderBoard {
         }
     }
 
-    public void insertNewRecord(String newName, int newScore){
+    public void insertNewRecord(String newName, String newDate,int newScore){
         File oldFile = new File(path);
         File newFile = new File(tempFile);
         String oldName;
         int oldScore;
+        String oldDate;
         boolean isInserted = false;
+
 
         try{
             FileWriter fw = new FileWriter(tempFile, true);
@@ -53,17 +55,18 @@ public class LeaderBoard {
 
             while (scanner.hasNext()){
                 oldName = scanner.next();
+                oldDate = scanner.next();
                 oldScore = Integer.parseInt(scanner.next());
                 if((newScore> oldScore) && !isInserted){
-                    pw.println(newName+","+newScore);
-                    pw.println(oldName+","+oldScore);
+                    pw.println(newName+","+newDate+","+newScore);
+                    pw.println(oldName+","+oldDate+","+oldScore);
                     isInserted = true;
                 }else{
-                    pw.println(oldName+","+oldScore);
+                    pw.println(oldName+","+oldDate+","+oldScore);
                 }
             }
             if(!isInserted){
-                pw.println(newName+","+newScore);
+                pw.println(newName+","+newDate+","+newScore);
             }
 
             scanner.close();
