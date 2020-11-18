@@ -27,8 +27,8 @@ public abstract class World extends Pane {
 						public void handle(KeyEvent event) {
 							if(getOnKeyReleased() != null) 
 								getOnKeyReleased().handle(event);
-							List<Actor> myActors = getObjects(Actor.class);
-							for (Actor anActor: myActors) {
+							List<Node> myActors = getObjects(Actor.class);
+							for (Node anActor: myActors) {
 								if (anActor.getOnKeyReleased() != null) {
 									anActor.getOnKeyReleased().handle(event);
 								}
@@ -41,8 +41,8 @@ public abstract class World extends Pane {
 						public void handle(KeyEvent event) {
 							if(getOnKeyPressed() != null) 
 								getOnKeyPressed().handle(event);
-							List<Actor> myActors = getObjects(Actor.class);
-							for (Actor anActor: myActors) {
+							List<Node> myActors = getObjects(Actor.class);
+							for (Node anActor: myActors) {
 								if (anActor.getOnKeyPressed() != null) {
 									anActor.getOnKeyPressed().handle(event);
 								}
@@ -59,10 +59,10 @@ public abstract class World extends Pane {
             @Override
             public void handle(long now) {
                 act(now);
-                List<Actor> actors = getObjects(Actor.class);
-                
-                for (Actor anActor: actors) {
-                	anActor.act(now);
+                List<Node> actors = getObjects(Actor.class);
+
+                for (Node anActor: actors) {
+                    ((Actor)anActor).act(now);
                 }
             }
         };
@@ -84,11 +84,11 @@ public abstract class World extends Pane {
         getChildren().remove(actor);
     }
 
-    public <A extends Actor> List<A> getObjects(Class<A> cls) {
-        ArrayList<A> someArray = new ArrayList<A>();
+    public  List<Node> getObjects(Class cls) {
+        ArrayList<Node> someArray = new ArrayList<>();
         for (Node n: getChildren()) {
             if (cls.isInstance(n)) {
-                someArray.add((A)n);
+                someArray.add(n);
             }
         }
         return someArray;

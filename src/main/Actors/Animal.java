@@ -1,9 +1,11 @@
 package main.Actors;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javafx.event.EventHandler;
 
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -26,6 +28,7 @@ public class Animal extends Actor {
 	int carD = 0;
 	double w = 800;
 	ArrayList<End> inter = new ArrayList<End>();
+
 
 	public Animal(String imageLink) {
 		setImage(new Image(imageLink, imgSize, imgSize, true, true));
@@ -207,47 +210,58 @@ public class Animal extends Actor {
 		if (getX()>600) {
 			move(-movement*2, 0);
 		}
-		if (getIntersectingObjects(Obstacle.class).size() >= 1) {
-			carDeath = true;
-		}
-		if (getX() == 240 && getY() == 82) {
-			stop = true;
-		}
-		if (getIntersectingObjects(Log.class).size() >= 1 && !noMove) {
-			if(getIntersectingObjects(Log.class).get(0).getLeft())
-				move(-2,0);
-			else
-				move (.75,0);
-		}
-		else if (getIntersectingObjects(Turtle.class).size() >= 1 && !noMove) {
-			move(-1,0);
-		}
-		else if (getIntersectingObjects(WetTurtle.class).size() >= 1) {
-			if (getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
-				waterDeath = true;
-			} else {
-				move(-1,0);
+		List<Node> intersectingObjects =getIntersectingObjects(Actor.class);
+
+		if(intersectingObjects.size()>=1){
+			System.out.println(intersectingObjects.get(0).getClass());
+			if(Obstacle.class.isInstance(intersectingObjects.get(0))){
+				carDeath = true;
+				System.out.println(carDeath);
 			}
 		}
-		else if (getIntersectingObjects(End.class).size() >= 1) {
-			inter = (ArrayList<End>) getIntersectingObjects(End.class);
-			if (getIntersectingObjects(End.class).get(0).isActivated()) {
-				end--;
-				points-=50;
-			}
-			points+=50;
-			changeScore = true;
-			w=800;
-			getIntersectingObjects(End.class).get(0).setEnd();
-			end++;
-			setX(300);
-			setY(679.8+movement);
-		}
-		else if (getY()<380){
-			waterDeath = true;
-			//setX(300);
-			//setY(679.8+movement);
-		}
+//		if (getIntersectingObjects(Obstacle.class).size() >= 1) {
+//			carDeath = true;
+//		}
+//		if (getX() == 240 && getY() == 82) {
+//			stop = true;
+//		}
+//		if (getIntersectingObjects(Log.class).size() >= 1 && !noMove) {
+//			double speed = getIntersectingObjects(Log.class).get(0).getSpeed();
+//			if(getIntersectingObjects(Log.class).get(0).getLeft())
+//				move(speed,0);
+//			else
+//				move (speed,0);
+//		}
+//		else if (getIntersectingObjects(Turtle.class).size() >= 1 && !noMove) {
+//
+//			move(-1,0);
+//		}
+//		else if (getIntersectingObjects(WetTurtle.class).size() >= 1) {
+//			if (getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
+//				waterDeath = true;
+//			} else {
+//				move(-1,0);
+//			}
+//		}
+//		else if (getIntersectingObjects(End.class).size() >= 1) {
+//			inter = (ArrayList<End>) getIntersectingObjects(End.class);
+//			if (getIntersectingObjects(End.class).get(0).isActivated()) {
+//				end--;
+//				points-=50;
+//			}
+//			points+=50;
+//			changeScore = true;
+//			w=800;
+//			getIntersectingObjects(End.class).get(0).setEnd();
+//			end++;
+//			setX(300);
+//			setY(679.8+movement);
+//		}
+//		else if (getY()<380){
+//			waterDeath = true;
+//			//setX(300);
+//			//setY(679.8+movement);
+//		}
 	}
 	public boolean getStop() {
 		return end==5;

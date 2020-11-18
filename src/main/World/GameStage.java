@@ -1,6 +1,8 @@
 package main.World;
 
 import java.io.File;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 import java.time.LocalDate;
@@ -170,9 +172,12 @@ public class GameStage extends World {
 		inputDialog.setContentText("Enter your player name:");
 		Optional<String> result = inputDialog.showAndWait();
 
+		LocalDateTime localDate = LocalDateTime.now();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+		String date = dtf.format(localDate);
 
 		leaderBoard = new LeaderBoard();
-		leaderBoard.insertNewRecord(result.get(), "12/10/2020" ,frog.getPoints());
+		leaderBoard.insertNewRecord(result.get(), date ,frog.getPoints());
 
 	}
 

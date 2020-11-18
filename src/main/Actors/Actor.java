@@ -1,5 +1,6 @@
 package main.Actors;
 
+import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputEvent;
 import main.World.World;
@@ -26,10 +27,10 @@ public abstract class Actor extends ImageView{
         return this.getBoundsInLocal().getHeight();
     }
 
-    public <A extends Actor> java.util.List<A> getIntersectingObjects(java.lang.Class<A> cls){
-        ArrayList<A> someArray = new ArrayList<A>();
-        for (A actor: getWorld().getObjects(cls)) {
-            if (actor != this && actor.intersects(this.getBoundsInLocal())) {
+    public java.util.List<Node> getIntersectingObjects(Class cls){
+        ArrayList<Node> someArray = new ArrayList<Node>();
+        for (Node actor: getWorld().getObjects(cls)) {
+            if (actor != (Animal)this && actor.intersects(this.getBoundsInLocal())) {
                 someArray.add(actor);
             }
         }
@@ -40,10 +41,10 @@ public abstract class Actor extends ImageView{
         
     }
 
-    public <A extends Actor> A getOneIntersectingObject(java.lang.Class<A> cls) {
-        ArrayList<A> someArray = new ArrayList<A>();
-        for (A actor: getWorld().getObjects(cls)) {
-            if (actor != this && actor.intersects(this.getBoundsInLocal())) {
+    public Node getOneIntersectingObject(Class cls) {
+        ArrayList<Node> someArray = new ArrayList<Node>();
+        for (Node actor: getWorld().getObjects(cls)) {
+            if (actor != (Node) this && actor.intersects(this.getBoundsInLocal())) {
                 someArray.add(actor);
                 break;
             }
@@ -52,5 +53,4 @@ public abstract class Actor extends ImageView{
     }
 
     public abstract void act(long now);
-
 }
