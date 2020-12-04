@@ -2,9 +2,7 @@ package main;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import main.Actors.*;
 import main.MainMenu.MainMenu;
 
 public class Main extends Application {
@@ -23,6 +21,7 @@ public class Main extends Application {
 		mainScene = mainMenu.setupMainScene();
 		//Start the application.
 		primaryStage.setScene(mainScene);
+		mainMenu.playMusic();
 		primaryStage.show();
 	}
 }

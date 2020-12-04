@@ -2,8 +2,8 @@ package main.Actors;
 
 import javafx.scene.image.Image;
 
-public class Obstacle extends Actor {
-	private int speed;
+public class Obstacle extends Actor{
+	private double speed;
 	@Override
 	public void act(long now) {
 		move(speed , 0);
@@ -19,5 +19,4 @@ public class Obstacle extends Actor {
 		setY(ypos);
 		speed = s;
 	}
-
 }

@@ -6,16 +6,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import main.Main;
 import main.MainMenu.MainMenu;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.EventObject;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class LeaderBoardController implements Initializable {
@@ -35,7 +30,6 @@ public class LeaderBoardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        int numPlayer = leaderBoard.playerNames.length;
 
         name1.setText(leaderBoard.playerNames[0]);
         name2.setText(leaderBoard.playerNames[1]);

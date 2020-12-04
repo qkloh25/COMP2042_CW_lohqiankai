@@ -6,12 +6,10 @@ import java.util.Scanner;
 
 public class LeaderBoard {
     final private String path="src/main/LeaderBoard/LeaderBoard.csv";
-    final private String tempFile = "src/main/LeaderBoard/temp.csv";
-    String line = "";
     private static Scanner scanner;
-    public String playerNames[]= new String[15];
-    public String scores[] = new String[15];
-    public String dates[] = new String[15];
+    public String[] playerNames = new String[15];
+    public String[] scores = new String[15];
+    public String[] dates = new String[15];
 
     public LeaderBoard(){
         try {
@@ -38,6 +36,7 @@ public class LeaderBoard {
 
     public void insertNewRecord(String newName, String newDate,int newScore){
         File oldFile = new File(path);
+        String tempFile = "src/main/LeaderBoard/temp.csv";
         File newFile = new File(tempFile);
         String oldName;
         int oldScore;

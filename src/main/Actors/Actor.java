@@ -30,7 +30,7 @@ public abstract class Actor extends ImageView{
     public java.util.List<Node> getIntersectingObjects(Class cls){
         ArrayList<Node> someArray = new ArrayList<Node>();
         for (Node actor: getWorld().getObjects(cls)) {
-            if (actor != (Animal)this && actor.intersects(this.getBoundsInLocal())) {
+            if (actor != this && actor.intersects(this.getBoundsInLocal())) {
                 someArray.add(actor);
             }
         }
@@ -44,7 +44,7 @@ public abstract class Actor extends ImageView{
     public Node getOneIntersectingObject(Class cls) {
         ArrayList<Node> someArray = new ArrayList<Node>();
         for (Node actor: getWorld().getObjects(cls)) {
-            if (actor != (Node) this && actor.intersects(this.getBoundsInLocal())) {
+            if (actor != this && actor.intersects(this.getBoundsInLocal())) {
                 someArray.add(actor);
                 break;
             }

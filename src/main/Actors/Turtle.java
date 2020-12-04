@@ -2,11 +2,11 @@ package main.Actors;
 
 import javafx.scene.image.Image;
 
-public class Turtle extends Actor {
+public class Turtle extends Actor implements movingCarrier {
 	Image turtle1;
 	Image turtle2;
 	Image turtle3;
-	private int speed;
+	private double speed;
 	int i = 1;
 	boolean bool = true;
 	@Override
@@ -40,4 +40,9 @@ public class Turtle extends Actor {
 		speed = s;
 		setImage(turtle2);
 	}
+	@Override
+	public double getSpeed(){
+		return speed;
+	}
+
 }

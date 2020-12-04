@@ -2,8 +2,7 @@ package main.Actors;
 
 import javafx.scene.image.Image;
 
-public class Log extends Actor {
-
+public class Log extends Actor implements movingCarrier {
 	private double speed;
 	@Override
 	public void act(long now) {
@@ -18,13 +17,14 @@ public class Log extends Actor {
 		setImage(new Image(imageLink, size,size, true, true));
 		setX(xpos);
 		setY(ypos);
-		speed = s;
+		this.speed = s;
 		
 	}
-	public boolean getLeft() {
-		return speed < 0;
-	}
+	@Override
 	public double getSpeed(){
 		return speed;
+	}
+	public void setSpeed(int speed){
+		this.speed = speed;
 	}
 }

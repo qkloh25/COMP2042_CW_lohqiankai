@@ -2,12 +2,12 @@ package main.Actors;
 
 import javafx.scene.image.Image;
 
-public class WetTurtle extends Actor {
+public class WetTurtle extends Actor implements movingCarrier {
 	Image turtle1;
 	Image turtle2;
 	Image turtle3;
 	Image turtle4;
-	private int speed;
+	private double speed;
 	int i = 1;
 	boolean bool = true;
 	boolean sunk = false;
@@ -49,5 +49,9 @@ public class WetTurtle extends Actor {
 	}
 	public boolean isSunk() {
 		return sunk;
+	}
+	@Override
+	public double getSpeed(){
+		return speed;
 	}
 }

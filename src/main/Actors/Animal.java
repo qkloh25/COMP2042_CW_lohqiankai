@@ -3,6 +3,7 @@ package main.Actors;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 
 import javafx.scene.Node;
@@ -13,18 +14,21 @@ import javafx.scene.input.KeyEvent;
 
 public class Animal extends Actor {
 	Image imgW1, imgA1, imgS1, imgD1, imgW2, imgA2, imgS2, imgD2;
-	Image carDeath1, carDeath2, carDeath3, carDeath4;
+	Image carDeath1, carDeath2, carDeath3;
+	Image waterDeath1, waterDeath2, waterDeath3, waterDeath4;
+	int lifes = 3;
 	int points = 0;
-	int end = 0;
-	private boolean second = false;
+	int end = 4 ;
+	private boolean secondW = false, secondA =false ,secondS =false, secondD = false;
 	boolean noMove = false;
 	double movement = 12.4 * 2;
-	double movementX = 10.666666*2;
+	double movementX = 10.666666 * 2;
 	int imgSize = 40;
 	boolean carDeath = false;
 	boolean waterDeath = false;
 	boolean stop = false;
 	boolean changeScore = false;
+	boolean changeLife = false;
 	int carD = 0;
 	double w = 800;
 	ArrayList<End> inter = new ArrayList<End>();
@@ -33,7 +37,7 @@ public class Animal extends Actor {
 	public Animal(String imageLink) {
 		setImage(new Image(imageLink, imgSize, imgSize, true, true));
 		setX(300);
-		setY(679.8+movement);
+		setY(679.8 + movement);
 		imgW1 = new Image("file:src/pics/froggerUp.png", imgSize, imgSize, true, true);
 		imgA1 = new Image("file:src/pics/froggerLeft.png", imgSize, imgSize, true, true);
 		imgS1 = new Image("file:src/pics/froggerDown.png", imgSize, imgSize, true, true);
@@ -45,240 +49,236 @@ public class Animal extends Actor {
 		carDeath1 = new Image("file:src/pics/cardeath1.png", imgSize, imgSize, true, true);
 		carDeath2 = new Image("file:src/pics/cardeath2.png", imgSize, imgSize, true, true);
 		carDeath3 = new Image("file:src/pics/cardeath3.png", imgSize, imgSize, true, true);
-		carDeath4 = new Image("file:src/pics/cardeath4.png", imgSize, imgSize, true, true);
+		waterDeath1 = new Image("file:src/pics/waterdeath1.png", imgSize, imgSize, true, true);
+		waterDeath2 = new Image("file:src/pics/waterdeath2.png", imgSize, imgSize, true, true);
+		waterDeath3 = new Image("file:src/pics/waterdeath3.png", imgSize, imgSize, true, true);
+		waterDeath4 = new Image("file:src/pics/waterdeath4.png", imgSize, imgSize, true, true);
 
 		setOnKeyPressed(new EventHandler<KeyEvent>() {
-			public void handle(KeyEvent event){
+			public void handle(KeyEvent event) {
 				if (noMove) {
-					
+				} else {
+					if (event.getCode() == KeyCode.W && !secondW) {
+						move(0, -movement);
+						setImage(imgW2);
+						secondW = true;
+					}
+					if (event.getCode() == KeyCode.A && !secondA) {
+						move(-movementX, 0);
+						setImage(imgA2);
+						secondA = true;
+					}
+					if (event.getCode() == KeyCode.S && !secondS) {
+						move(0, movement);
+						setImage(imgS2);
+						secondS = true;
+					}
+					if (event.getCode() == KeyCode.D && !secondD) {
+						move(movementX, 0);
+						setImage(imgD2);
+						secondD = true;
+					}
+
 				}
-				else {
-				if (second) {
-					if (event.getCode() == KeyCode.W) {	  
-		                move(0, -movement);
-		                changeScore = false;
-		                setImage(imgW1);
-		                second = false;
-		            }
-		            else if (event.getCode() == KeyCode.A) {	            	
-		            	 move(-movementX, 0);
-		            	 setImage(imgA1);
-		            	 second = false;
-		            }
-		            else if (event.getCode() == KeyCode.S) {	            	
-		            	 move(0, movement);
-		            	 setImage(imgS1);
-		            	 second = false;
-		            }
-		            else if (event.getCode() == KeyCode.D) {	            	
-		            	 move(movementX, 0);
-		            	 setImage(imgD1);
-		            	 second = false;
-		            }
-				}
-				else if (event.getCode() == KeyCode.W) {	            	
-	                move(0, -movement);
-	                setImage(imgW2);
-	                second = true;
-	            }
-	            else if (event.getCode() == KeyCode.A) {	            	
-	            	 move(-movementX, 0);
-	            	 setImage(imgA2);
-	            	 second = true;
-	            }
-	            else if (event.getCode() == KeyCode.S) {	            	
-	            	 move(0, movement);
-	            	 setImage(imgS2);
-	            	 second = true;
-	            }
-	            else if (event.getCode() == KeyCode.D) {	            	
-	            	 move(movementX, 0);
-	            	 setImage(imgD2);
-	            	 second = true;
-	            }
-	        }
 			}
 		});
 
 		setOnKeyReleased(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event) {
-				if (noMove) {}
-				else {
-					if (event.getCode() == KeyCode.W) {
+				if (noMove) {
+				} else {
+
+					if (event.getCode() == KeyCode.W && secondW & getY()<679.8 + movement) {
 						if (getY() < w) {
-								changeScore = true;
-								w = getY();
-								points+=10;
-							}
+							changeScore = true;
+							w = getY();
+//							points += 10;
+						}
 						move(0, -movement);
 						setImage(imgW1);
-						second = false;
-						}
-					else if (event.getCode() == KeyCode.A) {
-						 move(-movementX, 0);
-						 setImage(imgA1);
-						 second = false;
+						secondW = false;
 					}
-					else if (event.getCode() == KeyCode.S) {
-						 move(0, movement);
-						 setImage(imgS1);
-						 second = false;
+					if (event.getCode() == KeyCode.A && secondA) {
+						move(-movementX, 0);
+						setImage(imgA1);
+						secondA = false;
 					}
-					else if (event.getCode() == KeyCode.D) {
-						 move(movementX, 0);
-						 setImage(imgD1);
-						 second = false;
+					if (event.getCode() == KeyCode.S && secondS) {
+						move(0, movement);
+						setImage(imgS1);
+						secondS = false;
 					}
+					if (event.getCode() == KeyCode.D && secondD) {
+						move(movementX, 0);
+						setImage(imgD1);
+						secondD = false;
+					}
+
 				}
 			}
-			
+
 		});
 	}
-	
+
 	@Override
 	public void act(long now) {
 		int bounds = 0;
 
-		if (getY()<0 || getY()>734) {
+		if (getY() < 0 || getY() > 734) {
 			setX(300);
-			setY(679.8+movement);
+			setY(679.8 + movement);
 		}
-		if (getX()<0) {
-			move(movement*2, 0);
+		if (getX() < 0) {
+			move(movement * 2, 0);
 		}
 
 		if (carDeath) {
+			resetSeonds();
 			noMove = true;
-			if ((now)% 3 ==0) {
+			if ((now) % 3 == 0) {
 				carD++;
 			}
-			if (carD==1) {
-				setImage(new Image("file:src/pics/cardeath1.png", imgSize, imgSize, true, true));
-			}
-			if (carD==2) {
-				setImage(new Image("file:src/pics/cardeath2.png", imgSize, imgSize, true, true));
-			}
-			if (carD==3) {
-				setImage(new Image("file:src/pics/cardeath3.png", imgSize, imgSize, true, true));
-			}
-			if (carD == 4) {
-				setX(300);
-				setY(679.8+movement);
-				carDeath = false;
-				carD = 0;
-				setImage(new Image("file:src/pics/froggerUp.png", imgSize, imgSize, true, true));
-				noMove = false;
-				if (points>50) {
-					points-=50;
-					changeScore = true;
-				}
-			}
-			
-		}
-		if (waterDeath) {
-			noMove = true;
-			if ((now)% 3 ==0) {
-				carD++;
-			}
-			if (carD==1) {
+			if (carD == 1) {
 				setImage(carDeath1);
 			}
-			if (carD==2) {
+			if (carD == 2) {
 				setImage(carDeath2);
 			}
-			if (carD==3) {
+			if (carD == 3) {
 				setImage(carDeath3);
 			}
 			if (carD == 4) {
-				setImage(carDeath4);
+				setX(300);
+				setY(679.8 + movement);
+				carDeath = false;
+				carD = 0;
+				setImage(imgW1);
+				noMove = false;
+				if (points > 50) {
+					points -= 50;
+					changeScore = true;
+
+				}
+
+				lifes--;
+				changeLife = true;
+			}
+
+		}
+		if (waterDeath) {
+			resetSeonds();
+			noMove = true;
+			if ((now) % 4 == 0) {
+				carD++;
+			}
+			if (carD == 1) {
+				setImage(waterDeath1);
+			}
+			if (carD == 2) {
+				setImage(waterDeath2);
+			}
+			if (carD == 3) {
+				setImage(waterDeath3);
+			}
+			if (carD == 4) {
+				setImage(waterDeath4);
 			}
 			if (carD == 5) {
 				setX(300);
-				setY(679.8+movement);
+				setY(679.8 + movement);
 				waterDeath = false;
 				carD = 0;
 				setImage(imgW1);
 				noMove = false;
-				if (points>50) {
-					points-=50;
+				if (points > 50) {
+					points -= 50;
 					changeScore = true;
 				}
+				lifes--;
+				changeLife = true;
 			}
-			
-		}
-		
-		if (getX()>600) {
-			move(-movement*2, 0);
-		}
-		List<Node> intersectingObjects =getIntersectingObjects(Actor.class);
 
-		if(intersectingObjects.size()>=1){
-			System.out.println(intersectingObjects.get(0).getClass());
-			if(Obstacle.class.isInstance(intersectingObjects.get(0))){
-				carDeath = true;
-				System.out.println(carDeath);
-			}
 		}
-//		if (getIntersectingObjects(Obstacle.class).size() >= 1) {
-//			carDeath = true;
-//		}
-//		if (getX() == 240 && getY() == 82) {
-//			stop = true;
-//		}
-//		if (getIntersectingObjects(Log.class).size() >= 1 && !noMove) {
-//			double speed = getIntersectingObjects(Log.class).get(0).getSpeed();
-//			if(getIntersectingObjects(Log.class).get(0).getLeft())
-//				move(speed,0);
-//			else
-//				move (speed,0);
-//		}
-//		else if (getIntersectingObjects(Turtle.class).size() >= 1 && !noMove) {
-//
-//			move(-1,0);
-//		}
-//		else if (getIntersectingObjects(WetTurtle.class).size() >= 1) {
-//			if (getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
-//				waterDeath = true;
-//			} else {
-//				move(-1,0);
-//			}
-//		}
-//		else if (getIntersectingObjects(End.class).size() >= 1) {
-//			inter = (ArrayList<End>) getIntersectingObjects(End.class);
-//			if (getIntersectingObjects(End.class).get(0).isActivated()) {
-//				end--;
-//				points-=50;
-//			}
-//			points+=50;
-//			changeScore = true;
-//			w=800;
-//			getIntersectingObjects(End.class).get(0).setEnd();
-//			end++;
-//			setX(300);
-//			setY(679.8+movement);
-//		}
-//		else if (getY()<380){
+
+		if (getX() > 600) {
+			move(-movement * 2, 0);
+		}
+
+		List<Node> intersectingObjects = getIntersectingObjects(Actor.class);
+		if (intersectingObjects.size() >= 1) {
+			Node theIntersetingObject = intersectingObjects.get(0);
+			if (Obstacle.class.isInstance(theIntersetingObject)) {
+				carDeath = true;
+			}
+
+			if (!noMove) {
+				if (Log.class.isInstance(theIntersetingObject) || Turtle.class.isInstance(theIntersetingObject)) {
+					double speed = ((movingCarrier) theIntersetingObject).getSpeed();
+					move(speed, 0);
+				} else if (WetTurtle.class.isInstance(theIntersetingObject)) {
+					if (((WetTurtle) theIntersetingObject).isSunk()) {
+						waterDeath = true;
+					} else {
+						double speed = ((movingCarrier) theIntersetingObject).getSpeed();
+						move(speed, 0);
+					}
+				} else if (End.class.isInstance(theIntersetingObject)) {
+					if (((End) theIntersetingObject).isActivated()) {
+						points -= 50;
+						waterDeath = true;
+					}else if(getY()<110) {
+						points += 50;
+						changeScore = true;
+						w = 800;
+						((End) theIntersetingObject).setEnd();
+						end++;
+						setX(300);
+						setY(679.8 + movement);
+						lifes++;
+						changeLife = true;
+					}
+				}
+			}
+		}else if (getY()<380){
 //			waterDeath = true;
-//			//setX(300);
-//			//setY(679.8+movement);
-//		}
+		}
 	}
+
 	public boolean getStop() {
 		return end==5;
 	}
-	
+	public boolean GameOver(){ return lifes==0;}
+	public void resetEnd(){
+		end = 4;
+	}
+
 	public int getPoints() {
 		return points;
 	}
-	
+	public void resetPoints(){
+		points = 0;
+	}
+	public int getLifes(){return lifes;}
+
 	public boolean changeScore() {
 		if (changeScore) {
 			changeScore = false;
 			return true;
 		}
 		return false;
-		
 	}
-	
+	public boolean changeLife(){
+		if(changeLife){
+			changeLife = false;
+			return true;
+		}
+		return false;
+	}
 
+	public void resetSeonds(){
+		secondA=false;
+		secondD=false;
+		secondS = false;
+		secondW = false;
+	}
 }
