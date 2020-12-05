@@ -24,7 +24,7 @@ public class Log extends Actor implements movingCarrier {
 	public double getSpeed(){
 		return speed;
 	}
-	public void setSpeed(int speed){
+	public void setSpeed(double speed){
 		this.speed = speed;
 	}
 }

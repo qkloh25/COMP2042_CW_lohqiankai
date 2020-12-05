@@ -19,4 +19,8 @@ public class Obstacle extends Actor{
 		setY(ypos);
 		speed = s;
 	}
+
+	public void setSpeed(double speed){
+		this.speed = speed;
+	}
 }

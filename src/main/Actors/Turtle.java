@@ -28,7 +28,7 @@ public class Turtle extends Actor implements movingCarrier {
 		move(speed , 0);
 		if (getX() > 600 && speed>0)
 			setX(-200);
-		if (getX() < -75 && speed<0)
+		if (getX() < -150 && speed<0)
 			setX(600);
 	}
 	public Turtle(int xpos, int ypos, int s, int w, int h) {
@@ -43,6 +43,9 @@ public class Turtle extends Actor implements movingCarrier {
 	@Override
 	public double getSpeed(){
 		return speed;
+	}
+	public void setSpeed(double speed){
+		this.speed = speed;
 	}
 
 }
