@@ -1,5 +1,6 @@
 package main.MainMenu;
 
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -16,8 +17,11 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import main.World.GameStage;
 import main.Main;
 
@@ -28,18 +32,21 @@ public class MainMenu extends Parent {
     Scene gameScene;
     MediaPlayer mediaPlayer;
     public MainMenu(Stage primaryStage){
+        int offset = 500;
         ImageView logo = new ImageView(new Image("file:src/pics/frogger-logo.png", 300, 300, true, true));
         logo.setTranslateX(140);
         logo.setTranslateY(20);
 
         VBox menu0 = new VBox(10);
-
         menu0.setTranslateX(170);
         menu0.setTranslateY(250);
 
+        VBox menu1 = new VBox(10);
+        menu1.setTranslateX(0);
+        menu1.setTranslateY(0);
+
         MenuButton btnGame = new MenuButton("Start");
         btnGame.setOnMouseClicked(event ->{
-
             gameStage = new GameStage(primaryStage);
             gameScene = gameStage.setupGameScene();
             primaryStage.setScene(gameScene);
@@ -63,19 +70,72 @@ public class MainMenu extends Parent {
         });
         MenuButton btnHowtoPlay = new MenuButton("HOW TO PLAY");
         btnHowtoPlay.setOnMouseClicked(event ->{
+            getChildren().add(menu1);
 
+            TranslateTransition tt = new TranslateTransition(Duration.seconds(0.25),menu0);
+            tt.setToX(menu0.getTranslateX() - offset);
+
+            TranslateTransition tt1 = new TranslateTransition(Duration.seconds(0.5),menu1);
+            tt1.setToX(35);
+
+            tt.play();
+            tt1.play();
+            getChildren().remove(menu0);
         });
 
         MenuButton btnExit = new MenuButton("EXIT");
         btnExit.setOnMouseReleased(event -> System.exit(0));
-
         menu0.getChildren().addAll(btnGame,btnLeaderBoards,btnHowtoPlay,btnExit);
 
-        Rectangle bg = new Rectangle(565,800);
-        bg.setFill(Color.GREY);
-        bg.setOpacity(0);
+        MenuButton btnBack = new MenuButton("Back");
+        btnBack.setOnMouseClicked(event -> {
+            getChildren().add(menu0);
 
-        getChildren().addAll(bg,logo, menu0);
+            TranslateTransition tt = new TranslateTransition(Duration.seconds(0.25), menu1);
+            tt.setToX(menu1.getTranslateX() - offset);
+
+            TranslateTransition tt1 = new TranslateTransition(Duration.seconds(0.5), menu0);
+            tt1.setToX(170);
+
+
+            tt.play();
+            tt1.play();
+            getChildren().remove(menu1);
+        });
+
+        StackPane InstructionView = new StackPane();
+        Text insturctions = new Text(50,50,"" +
+                "1.There are totally 10 rounds.\n\n" +
+                "2.Each round with 5 destinations.\n\n" +
+                "3.Reach all 5 destinations, we proceed to the next round.\n\n" +
+                "4.Reach a destination, u gain points and a life.\n\n" +
+                "5.Die in water or car crash, you lose points and a life.\n\n" +
+                "6.If your life become 0, it is GameOver.\n\n" +
+                "7.Remaining lifes will turn into points at Round10.\n\n" +
+                "8.Use the keys 'A' 'W' 'S' 'D' to move the frog.\n\n" +
+                "9.Try your best to make your name on LEADERBOARD!\n\n" +
+                "10.Good Luck and have Fun!");
+
+        Font font = new Font("Serif",20);
+
+        insturctions.setFont(font);
+        insturctions.setFill(Color.WHITE);
+
+
+        Rectangle bg = new Rectangle(500,500);
+        bg.setOpacity(0.7);
+        bg.setFill(Color.BLACK);
+        bg.setEffect(new GaussianBlur(3.5));
+
+
+        InstructionView.getChildren().addAll(bg,insturctions);
+        menu1.getChildren().addAll(btnBack,InstructionView);
+//
+//        Rectangle bg = new Rectangle(565,800);
+//        bg.setFill(Color.GREY);
+//        bg.setOpacity(0);
+
+        getChildren().addAll(logo, menu0);
 
     }
 

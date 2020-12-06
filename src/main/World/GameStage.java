@@ -183,7 +183,7 @@ public class GameStage extends World {
 					mediaPlayer.play();
 					mediaPlayer.setVolume(0.3);
 					HighScoreBoard board = new HighScoreBoard(scores);
-					board.setTranslateX(150);
+					board.setTranslateX(130);
 					board.setTranslateY(200);
 					getChildren().add(board);
 					mediaPlayer.setOnEndOfMedia(new Runnable() {

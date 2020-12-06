@@ -1,5 +1,6 @@
 package main.Actors;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,8 @@ import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 
 public class Animal extends Actor {
@@ -18,7 +21,7 @@ public class Animal extends Actor {
 	Image waterDeath1, waterDeath2, waterDeath3, waterDeath4;
 	int lifes = 3;
 	int points = 0;
-	int end = 4 ;
+	int end = 0 ;
 	private boolean secondW = false, secondA =false ,secondS =false, secondD = false;
 	boolean noMove = false;
 	double movement = 12.4 * 2;
@@ -31,6 +34,12 @@ public class Animal extends Actor {
 	boolean changeLife = false;
 	int carD = 0;
 	double w = 800;
+
+
+
+
+
+
 	ArrayList<End> inter = new ArrayList<End>();
 
 
@@ -62,21 +71,25 @@ public class Animal extends Actor {
 						move(0, -movement);
 						setImage(imgW2);
 						secondW = true;
+						playJumpSound();
 					}
 					if (event.getCode() == KeyCode.A && !secondA) {
 						move(-movementX, 0);
 						setImage(imgA2);
 						secondA = true;
+						playJumpSound();
 					}
 					if (event.getCode() == KeyCode.S && !secondS) {
 						move(0, movement);
 						setImage(imgS2);
 						secondS = true;
+						playJumpSound();
 					}
 					if (event.getCode() == KeyCode.D && !secondD) {
 						move(movementX, 0);
 						setImage(imgD2);
 						secondD = true;
+						playJumpSound();
 					}
 
 				}
@@ -92,26 +105,30 @@ public class Animal extends Actor {
 						if (getY() < w) {
 							changeScore = true;
 							w = getY();
-//							points += 10;
+							points += 10;
 						}
 						move(0, -movement);
 						setImage(imgW1);
 						secondW = false;
+
 					}
 					if (event.getCode() == KeyCode.A && secondA) {
 						move(-movementX, 0);
 						setImage(imgA1);
 						secondA = false;
+
 					}
 					if (event.getCode() == KeyCode.S && secondS) {
 						move(0, movement);
 						setImage(imgS1);
 						secondS = false;
+
 					}
 					if (event.getCode() == KeyCode.D && secondD) {
 						move(movementX, 0);
 						setImage(imgD1);
 						secondD = false;
+
 					}
 
 				}
@@ -129,13 +146,16 @@ public class Animal extends Actor {
 			setY(679.8 + movement);
 		}
 		if (getX() < 0) {
-			move(movement * 2, 0);
+			move(movement , 0);
+		}
+		if (getX() > 530) {
+			move(-movement , 0);
 		}
 
 		if (carDeath) {
 			resetSeonds();
 			noMove = true;
-			if ((now) % 3 == 0) {
+			if ((now) % 7 == 0) {
 				carD++;
 			}
 			if (carD == 1) {
@@ -168,7 +188,7 @@ public class Animal extends Actor {
 		if (waterDeath) {
 			resetSeonds();
 			noMove = true;
-			if ((now) % 4 == 0) {
+			if ((now) % 7 == 0) {
 				carD++;
 			}
 			if (carD == 1) {
@@ -200,9 +220,7 @@ public class Animal extends Actor {
 
 		}
 
-		if (getX() > 600) {
-			move(-movement * 2, 0);
-		}
+
 
 		List<Node> intersectingObjects = getIntersectingObjects(Actor.class);
 		if (intersectingObjects.size() >= 1) {
@@ -236,11 +254,12 @@ public class Animal extends Actor {
 						setY(679.8 + movement);
 						lifes++;
 						changeLife = true;
+						playScoreSound();
 					}
 				}
 			}
 		}else if (getY()<380){
-//			waterDeath = true;
+			waterDeath = true;
 		}
 	}
 
@@ -249,7 +268,7 @@ public class Animal extends Actor {
 	}
 	public boolean GameOver(){ return lifes==0;}
 	public void resetEnd(){
-		end = 4;
+		end = 0;
 	}
 
 	public int getPoints() {
@@ -259,7 +278,6 @@ public class Animal extends Actor {
 		points = 0;
 	}
 	public int getLifes(){return lifes;}
-
 	public boolean changeScore() {
 		if (changeScore) {
 			changeScore = false;
@@ -267,6 +285,26 @@ public class Animal extends Actor {
 		}
 		return false;
 	}
+	public void playJumpSound(){
+		String musicFile = "src/audios/jump.mp3";
+		Media sound = new Media(new File(musicFile).toURI().toString());
+		MediaPlayer jumpMediaPlayer = new MediaPlayer(sound);
+		jumpMediaPlayer.play();
+		jumpMediaPlayer.setVolume(0.2);
+		jumpMediaPlayer.setOnEndOfMedia(()->jumpMediaPlayer.dispose());
+
+	}
+
+	public void playScoreSound(){
+		String musicFile = "src/audios/score.mp3";
+		Media sound = new Media(new File(musicFile).toURI().toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(sound);
+		mediaPlayer.play();
+		mediaPlayer.setOnEndOfMedia(()->mediaPlayer.dispose());
+
+	}
+
+
 	public boolean changeLife(){
 		if(changeLife){
 			changeLife = false;

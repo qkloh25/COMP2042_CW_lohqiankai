@@ -21,6 +21,7 @@ public class Main extends Application {
 		mainScene = mainMenu.setupMainScene();
 		//Start the application.
 		primaryStage.setScene(mainScene);
+		primaryStage.setResizable(false);
 		mainMenu.playMusic();
 		primaryStage.show();
 	}
