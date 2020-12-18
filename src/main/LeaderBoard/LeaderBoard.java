@@ -32,6 +32,7 @@ public class LeaderBoard {
             scores[i] = scanner.next();
             i++;
         }
+        scanner.close();
     }
 
     public void insertNewRecord(String newName, String newDate,int newScore){
@@ -49,7 +50,7 @@ public class LeaderBoard {
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
 
-            scanner = new Scanner(new File(path));
+            scanner = new Scanner(oldFile);
             scanner.useDelimiter("[,\n]");
 
             while (scanner.hasNext()){
