@@ -10,7 +10,7 @@
    <children>
       <ImageView fx:id="back" fitHeight="915.0" fitWidth="575.0" layoutX="-3.0" layoutY="-57.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../pics/City.gif" />
+            <Image url="@../../res/pics/City.gif" />
          </image>
       </ImageView>
       <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="83.0" prefHeight="26.0" prefWidth="525.0" style="-fx-background-color: WHITE;">
@@ -83,7 +83,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="score1" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="800">
+                  <Label fx:id="score1" alignment="CENTER" prefHeight="5.0" prefWidth="50.0" text="800">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -125,7 +125,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="score2" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score2" alignment="CENTER" prefHeight="5.0" prefWidth="50.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -167,7 +167,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="score3" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score3" alignment="CENTER" prefHeight="5.0" prefWidth="50.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -209,7 +209,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="score4" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score4" alignment="CENTER" prefHeight="5.0" prefWidth="50.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -251,7 +251,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="score5" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score5" alignment="CENTER" prefHeight="5.0" prefWidth="50.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -293,7 +293,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="score6" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score6" alignment="CENTER" prefHeight="5.0" prefWidth="50.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -335,7 +335,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="score7" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score7" alignment="CENTER" prefHeight="5.0" prefWidth="50.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -377,7 +377,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="score8" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score8" alignment="CENTER" prefHeight="5.0" prefWidth="50.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -419,7 +419,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="score9" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score9" alignment="CENTER" prefHeight="5.0" prefWidth="50.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -461,7 +461,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="score10" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score10" alignment="CENTER" prefHeight="5.0" prefWidth="50.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -503,7 +503,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="score11" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score11" alignment="CENTER" prefHeight="5.0" prefWidth="50.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -545,7 +545,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="score12" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score12" alignment="CENTER" prefHeight="5.0" prefWidth="50.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -587,7 +587,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="score13" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score13" alignment="CENTER" prefHeight="5.0" prefWidth="50.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -629,7 +629,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="score14" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score14" alignment="CENTER" prefHeight="5.0" prefWidth="50.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -671,7 +671,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="score15" alignment="CENTER" prefHeight="5.0" prefWidth="32.0" text="-">
+                  <Label fx:id="score15" alignment="CENTER" prefHeight="5.0" prefWidth="50.0" text="-">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -694,7 +694,7 @@
          <graphic>
             <ImageView fitHeight="19.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../pics/backicon.png" />
+                  <Image url="@../../res/pics/backicon.png" />
                </image>
             </ImageView>
          </graphic>

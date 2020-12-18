@@ -14,14 +14,15 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-
 public class Animal extends Actor {
+	public static final String resourcePathPics = "file:src/res/pics/";
+	public static final String resourcePathAudios = "src/res/audios/";
 	Image imgW1, imgA1, imgS1, imgD1, imgW2, imgA2, imgS2, imgD2;
 	Image carDeath1, carDeath2, carDeath3;
 	Image waterDeath1, waterDeath2, waterDeath3, waterDeath4;
 	int lifes = 3;
 	int points = 0;
-	int end = 0 ;
+	int end = 0;
 	private boolean secondW = false, secondA =false ,secondS =false, secondD = false;
 	boolean noMove = false;
 	double movement = 12.4 * 2;
@@ -47,21 +48,21 @@ public class Animal extends Actor {
 		setImage(new Image(imageLink, imgSize, imgSize, true, true));
 		setX(300);
 		setY(679.8 + movement);
-		imgW1 = new Image("file:src/pics/froggerUp.png", imgSize, imgSize, true, true);
-		imgA1 = new Image("file:src/pics/froggerLeft.png", imgSize, imgSize, true, true);
-		imgS1 = new Image("file:src/pics/froggerDown.png", imgSize, imgSize, true, true);
-		imgD1 = new Image("file:src/pics/froggerRight.png", imgSize, imgSize, true, true);
-		imgW2 = new Image("file:src/pics/froggerUpJump.png", imgSize, imgSize, true, true);
-		imgA2 = new Image("file:src/pics/froggerLeftJump.png", imgSize, imgSize, true, true);
-		imgS2 = new Image("file:src/pics/froggerDownJump.png", imgSize, imgSize, true, true);
-		imgD2 = new Image("file:src/pics/froggerRightJump.png", imgSize, imgSize, true, true);
-		carDeath1 = new Image("file:src/pics/cardeath1.png", imgSize, imgSize, true, true);
-		carDeath2 = new Image("file:src/pics/cardeath2.png", imgSize, imgSize, true, true);
-		carDeath3 = new Image("file:src/pics/cardeath3.png", imgSize, imgSize, true, true);
-		waterDeath1 = new Image("file:src/pics/waterdeath1.png", imgSize, imgSize, true, true);
-		waterDeath2 = new Image("file:src/pics/waterdeath2.png", imgSize, imgSize, true, true);
-		waterDeath3 = new Image("file:src/pics/waterdeath3.png", imgSize, imgSize, true, true);
-		waterDeath4 = new Image("file:src/pics/waterdeath4.png", imgSize, imgSize, true, true);
+		imgW1 = new Image(resourcePathPics + "froggerUp.png", imgSize, imgSize, true, true);
+		imgA1 = new Image(resourcePathPics + "froggerLeft.png", imgSize, imgSize, true, true);
+		imgS1 = new Image(resourcePathPics + "froggerDown.png", imgSize, imgSize, true, true);
+		imgD1 = new Image(resourcePathPics + "froggerRight.png", imgSize, imgSize, true, true);
+		imgW2 = new Image(resourcePathPics + "froggerUpJump.png", imgSize, imgSize, true, true);
+		imgA2 = new Image(resourcePathPics + "froggerLeftJump.png", imgSize, imgSize, true, true);
+		imgS2 = new Image(resourcePathPics + "froggerDownJump.png", imgSize, imgSize, true, true);
+		imgD2 = new Image(resourcePathPics + "froggerRightJump.png", imgSize, imgSize, true, true);
+		carDeath1 = new Image(resourcePathPics + "cardeath1.png", imgSize, imgSize, true, true);
+		carDeath2 = new Image(resourcePathPics + "cardeath2.png", imgSize, imgSize, true, true);
+		carDeath3 = new Image(resourcePathPics + "cardeath3.png", imgSize, imgSize, true, true);
+		waterDeath1 = new Image(resourcePathPics + "waterdeath1.png", imgSize, imgSize, true, true);
+		waterDeath2 = new Image(resourcePathPics + "waterdeath2.png", imgSize, imgSize, true, true);
+		waterDeath3 = new Image(resourcePathPics + "waterdeath3.png", imgSize, imgSize, true, true);
+		waterDeath4 = new Image(resourcePathPics + "waterdeath4.png", imgSize, imgSize, true, true);
 
 		setOnKeyPressed(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event) {
@@ -71,25 +72,25 @@ public class Animal extends Actor {
 						move(0, -movement);
 						setImage(imgW2);
 						secondW = true;
-						playJumpSound();
+
 					}
 					if (event.getCode() == KeyCode.A && !secondA) {
 						move(-movementX, 0);
 						setImage(imgA2);
 						secondA = true;
-						playJumpSound();
+
 					}
 					if (event.getCode() == KeyCode.S && !secondS) {
 						move(0, movement);
 						setImage(imgS2);
 						secondS = true;
-						playJumpSound();
+
 					}
 					if (event.getCode() == KeyCode.D && !secondD) {
 						move(movementX, 0);
 						setImage(imgD2);
 						secondD = true;
-						playJumpSound();
+
 					}
 
 				}
@@ -184,8 +185,7 @@ public class Animal extends Actor {
 				changeLife = true;
 			}
 
-		}
-		if (waterDeath) {
+		}else if (waterDeath) {
 			resetSeonds();
 			noMove = true;
 			if ((now) % 7 == 0) {
@@ -218,48 +218,47 @@ public class Animal extends Actor {
 				changeLife = true;
 			}
 
-		}
+		} else {
+			List<Node> intersectingObjects = getIntersectingObjects(Actor.class);
+			if (intersectingObjects.size() >= 1) {
+				Node theIntersetingObject = intersectingObjects.get(0);
+				if (Obstacle.class.isInstance(theIntersetingObject)) {
+					carDeath = true;
+				}
 
-
-
-		List<Node> intersectingObjects = getIntersectingObjects(Actor.class);
-		if (intersectingObjects.size() >= 1) {
-			Node theIntersetingObject = intersectingObjects.get(0);
-			if (Obstacle.class.isInstance(theIntersetingObject)) {
-				carDeath = true;
-			}
-
-			if (!noMove) {
-				if (Log.class.isInstance(theIntersetingObject) || Turtle.class.isInstance(theIntersetingObject)) {
-					double speed = ((movingCarrier) theIntersetingObject).getSpeed();
-					move(speed, 0);
-				} else if (WetTurtle.class.isInstance(theIntersetingObject)) {
-					if (((WetTurtle) theIntersetingObject).isSunk()) {
-						waterDeath = true;
-					} else {
+				if (!noMove) {
+					if (Log.class.isInstance(theIntersetingObject) || Turtle.class.isInstance(theIntersetingObject)) {
 						double speed = ((movingCarrier) theIntersetingObject).getSpeed();
 						move(speed, 0);
-					}
-				} else if (End.class.isInstance(theIntersetingObject)) {
-					if (((End) theIntersetingObject).isActivated()) {
-						points -= 50;
-						waterDeath = true;
-					}else if(getY()<110) {
-						points += 50;
-						changeScore = true;
-						w = 800;
-						((End) theIntersetingObject).setEnd();
-						end++;
-						setX(300);
-						setY(679.8 + movement);
-						lifes++;
-						changeLife = true;
-						playScoreSound();
+					} else if (WetTurtle.class.isInstance(theIntersetingObject)) {
+						if (((WetTurtle) theIntersetingObject).isSunk()) {
+							waterDeath = true;
+						} else {
+							double speed = ((movingCarrier) theIntersetingObject).getSpeed();
+							move(speed, 0);
+						}
+					} else if (End.class.isInstance(theIntersetingObject)) {
+						if (((End) theIntersetingObject).isActivated()) {
+							points -= 50;
+							waterDeath = true;
+						} else if (getY() < 110) {
+							points += 50;
+							changeScore = true;
+							w = 800;
+							((End) theIntersetingObject).setEnd();
+							end++;
+							setX(300);
+							setY(679.8 + movement);
+							lifes++;
+							changeLife = true;
+							Platform.runLater(() -> playScoreSound());
+
+						}
 					}
 				}
+			} else if (getY() < 380) {
+				waterDeath = true;
 			}
-		}else if (getY()<380){
-			waterDeath = true;
 		}
 	}
 
@@ -285,25 +284,15 @@ public class Animal extends Actor {
 		}
 		return false;
 	}
-	public void playJumpSound(){
-		String musicFile = "src/audios/jump.mp3";
-		Media sound = new Media(new File(musicFile).toURI().toString());
-		MediaPlayer jumpMediaPlayer = new MediaPlayer(sound);
-		jumpMediaPlayer.play();
-		jumpMediaPlayer.setVolume(0.2);
-		jumpMediaPlayer.setOnEndOfMedia(()->jumpMediaPlayer.dispose());
-
-	}
 
 	public void playScoreSound(){
-		String musicFile = "src/audios/score.mp3";
+		String musicFile = resourcePathAudios +"score.mp3";
 		Media sound = new Media(new File(musicFile).toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(sound);
+		mediaPlayer.setCycleCount(1);
 		mediaPlayer.play();
-		mediaPlayer.setOnEndOfMedia(()->mediaPlayer.dispose());
 
 	}
-
 
 	public boolean changeLife(){
 		if(changeLife){

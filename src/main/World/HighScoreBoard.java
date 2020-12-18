@@ -2,7 +2,6 @@ package main.World;
 
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
-import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -12,10 +11,12 @@ import main.Actors.Digit;
 import java.util.*;
 
 public class HighScoreBoard extends Pane {
+    public static final String FILE_SRC_PICS = "file:src/res/pics/";
+
     public HighScoreBoard(ArrayList<Integer> originalscores){
         int num_round = originalscores.size();
         ArrayList<Integer> scores =  new ArrayList<>();
-        ImageView black_background = new ImageView(new Image("file:src/pics/black_background.png", 310, 500, true, true));
+        ImageView black_background = new ImageView(new Image(FILE_SRC_PICS + "black_background.png", 310, 500, true, true));
         ArrayList<Integer> roundnumber = new ArrayList<>();
         getChildren().add(black_background);
 
@@ -36,7 +37,7 @@ public class HighScoreBoard extends Pane {
         for(int i =0; i< num_round; i++) {
             Pane bar = new Pane();
             bar.setTranslateY(5+22*i);
-            round example = new round("file:src/pics/Round.png",90,11,4);
+            round example = new round(FILE_SRC_PICS + "Round.png",90,11,4);
             getChildren().add(bar);
             bar.getChildren().add(example);
             int shift = 0;
@@ -45,8 +46,8 @@ public class HighScoreBoard extends Pane {
                 int d = temp  / 10;
                 int k = temp - d * 10;
                 temp = d;
-                bar.getChildren().add(new Digit(k, 25, 110 - shift, 0,'w'));
-                shift+=20;
+                bar.getChildren().add(new Digit(k, 25, 120 - shift, 2,'w'));
+                shift+=18;
             }
             shift = 0;
 
@@ -56,7 +57,7 @@ public class HighScoreBoard extends Pane {
                 int k = scores.get(i) - d * 10;
                 scores.set(i,d);
                 bar.getChildren().add(new Digit(k, 25, 280 - shift, 0,'g'));
-                shift+=20;
+                shift+=22;
             }
             if(roundnumber.get(i)== num_round){
                 FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.2), bar);

@@ -1,5 +1,7 @@
 package main.LeaderBoard;
 
+import main.Main;
+import main.MainMenu.MainMenu;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -7,15 +9,16 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import main.Main;
-import main.MainMenu.MainMenu;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import main.Main;
 
 public class LeaderBoardController implements Initializable {
-    MainMenu mainMenu= Main.mainMenu;
+    MainMenu mainMenu = Main.mainMenu;
+
     LeaderBoard leaderBoard = new LeaderBoard();
+
 
     @FXML
     Label  name1, name2, name3, name4, name5, name6, name7, name8, name9, name10, name11, name12, name13, name14, name15;
@@ -25,8 +28,6 @@ public class LeaderBoardController implements Initializable {
     Label date1, date2, date3, date4, date5, date6, date7, date8, date9, date10, date11, date12, date13, date14, date15;
 
     //private List<Label> labelList;
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -6,12 +6,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import java.time.LocalDate;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,13 +24,15 @@ import main.MainMenu.MainMenu;
 
 public class GameStage extends World {
 	public final static int NUM_OF_ROUNDS = 10;
+	public static final String FILE_SRC_PICS = "file:src/res/pics/";
 	AnimationTimer timer;
 	MediaPlayer mediaPlayer;
 	Animal frog;
 	LeaderBoard leaderBoard;
-	MainMenu mainMenu = Main.mainMenu;
 	ArrayList<Integer> scores = new ArrayList<>();
 	Stage primaryStage;
+	MainMenu mainMenu = Main.mainMenu;
+
 
 	// initialize the actors.
 	End End1 = new End(11,96);
@@ -40,11 +41,11 @@ public class GameStage extends World {
 	End End4 = new End(11 + 120 + 120 + 120,96);
 	End End5 = new End(11 + 120 + 120 + 120 + 120,96);
 
-	Log Log1 = new Log("file:src/pics/logs.png", 270, 0, 260, -2);
-	Log Log2 = new Log("file:src/pics/logs.png", 270, 400, 260, -2);
-	Log Log3 = new Log("file:src/pics/log3.png", 135, 50, 310, 0.75);
-	Log Log4 = new Log("file:src/pics/log3.png", 135, 490, 310, 0.75);
-	Log Log5 = new Log("file:src/pics/log3.png", 135, 270, 310, 0.75);
+	Log Log1 = new Log(FILE_SRC_PICS + "logs.png", 270, 0, 260, -2);
+	Log Log2 = new Log(FILE_SRC_PICS + "logs.png", 270, 400, 260, -2);
+	Log Log3 = new Log(FILE_SRC_PICS + "log3.png", 135, 50, 310, 0.75);
+	Log Log4 = new Log(FILE_SRC_PICS + "log3.png", 135, 490, 310, 0.75);
+	Log Log5 = new Log(FILE_SRC_PICS + "log3.png", 135, 270, 310, 0.75);
 
 	Turtle Turtle1 = new Turtle(500, 350, -1, 120, 120);
 	Turtle Turtle2 = new Turtle(300, 350, -1, 120, 120);
@@ -53,18 +54,30 @@ public class GameStage extends World {
 	WetTurtle WetTurtle3 = new WetTurtle(400, 205, -1, 120, 120);
 	WetTurtle WetTurtle4 =new WetTurtle(200, 205, -1, 120, 120);
 
-	Obstacle truck1 = new Obstacle("file:src/pics/truck1"+"Right.png", 0, 655, 1, 110, 110);
-	Obstacle truck2 = new Obstacle("file:src/pics/truck1"+"Right.png", 300, 655, 1, 110, 110);
-	Obstacle truck3 = new Obstacle("file:src/pics/truck1"+"Right.png", 600, 655, 1, 110, 110);
-	Obstacle car1 = new Obstacle("file:src/pics/car1Left.png", 100, 605, -1, 50, 50);
-	Obstacle car2 = new Obstacle("file:src/pics/car1Left.png", 250, 605, -1, 50, 50);
-	Obstacle car3 = new Obstacle("file:src/pics/car1Left.png", 400, 605, -1, 50, 50);
+	Obstacle truck1 = new Obstacle(FILE_SRC_PICS + "truck1" +"Right.png", 0, 655, 1, 110, 110);
+	Obstacle truck2 = new Obstacle(FILE_SRC_PICS + "truck1" +"Right.png", 300, 655, 1, 110, 110);
+	Obstacle truck3 = new Obstacle(FILE_SRC_PICS + "truck1" +"Right.png", 600, 655, 1, 110, 110);
+	Obstacle car1 = new Obstacle(FILE_SRC_PICS + "car1Left.png", 100, 605, -1, 50, 50);
+	Obstacle car2 = new Obstacle(FILE_SRC_PICS + "car1Left.png", 250, 605, -1, 50, 50);
+	Obstacle car3 = new Obstacle(FILE_SRC_PICS + "car1Left.png", 400, 605, -1, 50, 50);
 
-	Obstacle truck4 = new Obstacle("file:src/pics/truck2Right.png", 0, 555, 1, 200, 200);
-	Obstacle truck5 = new Obstacle("file:src/pics/truck2Right.png", 500, 555, 1, 200, 200);
+	Obstacle truck4 = new Obstacle(FILE_SRC_PICS + "truck2Right.png", 0, 555, 1, 200, 200);
+	Obstacle truck5 = new Obstacle(FILE_SRC_PICS + "truck2Right.png", 500, 555, 1, 200, 200);
 
-	Obstacle quickcar1 = new Obstacle("file:src/pics/car1Left.png", 500, 505, -5, 50, 50);
-	Obstacle quickcar2 = new Obstacle("file:src/pics/car1right.png", 500, 455, 4, 50, 50);
+	Obstacle quickcar1 = new Obstacle(FILE_SRC_PICS + "car1Left.png", 500, 505, -5, 50, 50);
+	Obstacle quickcar2 = new Obstacle(FILE_SRC_PICS + "car1right.png", 500, 455, 4, 50, 50);
+
+	Digit scoreOnes = new Digit(0, 30, 525, 35,'r');
+	Digit scoreTens = new Digit(0, 30,525 - 23, 35,'r');
+	Digit scoreHundreds = new Digit(0, 30,525 - 23 - 23, 35,'r');
+
+	Digit lifeOnes = new Digit(3, 30, 75, 755,'r');
+	Digit lifeTens = new Digit(0, 30, 50, 755,'r');
+
+	Digit roundnumOnes = new Digit(1, 40, 340, 35,'w');
+
+	ImageView pauseIcon = new ImageView(new Image(FILE_SRC_PICS + "pause-icon.png", 40, 40, true, true));
+
 
 	@Override
 	public void act(long now) {
@@ -73,12 +86,17 @@ public class GameStage extends World {
 	
 	public GameStage(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		ImageView froggerback = new ImageView(new Image("file:src/pics/iKogsKW.png", 600, 800, true, true));
+		ImageView froggerback = new ImageView(new Image(FILE_SRC_PICS + "iKogsKW.png", 600, 800, true, true));
 		getChildren().add(froggerback);
 
-		add(new Log("file:src/pics/log3.png", 135, 0, 160, 1));
-		add(new Log("file:src/pics/log3.png", 135, 220, 160, 1));
-		add(new Log("file:src/pics/log3.png", 135, 440, 160, 1));
+		pauseIcon.setOnMouseClicked(event -> pause());
+		pauseIcon.setTranslateX(5);
+		pauseIcon.setTranslateY(5);
+		getChildren().add(pauseIcon);
+
+		add(new Log(FILE_SRC_PICS + "log3.png", 135, 0, 160, 1));
+		add(new Log(FILE_SRC_PICS + "log3.png", 135, 220, 160, 1));
+		add(new Log(FILE_SRC_PICS + "log3.png", 135, 440, 160, 1));
 		add(Log1);
 		add(Log2);
 		add(Log3);
@@ -104,13 +122,18 @@ public class GameStage extends World {
 		add(quickcar2);
 
 		getChildren().addAll(End1,End2,End3,End4, End5);
-		frog = new Animal("file:src/pics/froggerUp.png");
+		frog = new Animal(FILE_SRC_PICS + "froggerUp.png");
 		add(frog);
-		add(new Digit(0, 30, 525, 35));
-		add(new Digit(3, 30, 75, 755));
-		add(new Digit(1, 40, 330, 35,'w'));
+		add(scoreOnes);
+		add(scoreTens);
+		add(scoreHundreds);
+		add(lifeOnes);
+		add(lifeTens);
+		add(roundnumOnes);
 
-		ImageView heart = new ImageView(new Image("file:src/pics/heart.png", 40, 40, true, true));
+
+
+		ImageView heart = new ImageView(new Image(FILE_SRC_PICS + "heart.png", 40, 40, true, true));
 		heart.setTranslateY(750);
 		heart.setTranslateX(10);
 		getChildren().add(heart);
@@ -133,12 +156,12 @@ public class GameStage extends World {
 	}
 
 	public void playMusic() {
-		String musicFile = "src/audios/Gaming.mp3";
+		String musicFile = "src/res/audios/Gaming.mp3";
 		Media sound = new Media(new File(musicFile).toURI().toString());
 		mediaPlayer = new MediaPlayer(sound);
 		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 	    mediaPlayer.play();
-		mediaPlayer.setVolume(0.3);
+		mediaPlayer.setVolume(0.2);
 	}
 
 	public void stopMusic() {
@@ -155,20 +178,29 @@ public class GameStage extends World {
 					setLifesNumber(frog.getLifes());
 
 				}else if(frog.GameOver()){
+					scores.add(frog.getPoints());
 					setLifesNumber(frog.getLifes());
 					STOP();
 					stopMusic();
-					String musicFile = "src/audios/GameOver.mp3";
+					String musicFile = "src/res/audios/GameOver.mp3";
 					Media sound = new Media(new File(musicFile).toURI().toString());
 					mediaPlayer = new MediaPlayer(sound);
 					mediaPlayer.setCycleCount(1);
 					mediaPlayer.play();
 					mediaPlayer.setVolume(1.0);
-					Platform.runLater(()->{
-						popupResult();
-						toMainMenu();
+					HighScoreBoard board = new HighScoreBoard(scores);
+					board.setTranslateX(130);
+					board.setTranslateY(200);
+					getChildren().add(board);
+					mediaPlayer.setOnEndOfMedia(new Runnable() {
+						@Override
+						public void run() {
+							Platform.runLater(()->{
+								popupResult();
+								toMainMenu();
+							});
+						}
 					});
-
 				}
 
 				if (frog.getStop()) {
@@ -176,12 +208,12 @@ public class GameStage extends World {
 					scores.add(frog.getPoints());
 					getChildren().remove(frog);
 					stopMusic();
-					String musicFile = "src/audios/Clear.mp3";
+					String musicFile = "src/res/audios/Clear.mp3";
 					Media sound = new Media(new File(musicFile).toURI().toString());
 					mediaPlayer = new MediaPlayer(sound);
 					mediaPlayer.setCycleCount(1);
 					mediaPlayer.play();
-					mediaPlayer.setVolume(0.3);
+					mediaPlayer.setVolume(0.2);
 					HighScoreBoard board = new HighScoreBoard(scores);
 					board.setTranslateX(130);
 					board.setTranslateY(200);
@@ -230,10 +262,38 @@ public class GameStage extends World {
 		timer.stop();
 	}
 
+	public void pause(){
+		STOP();
+		mediaPlayer.pause();
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setTitle("Paused!");
+		alert.setHeaderText("Pause!");
+		alert.setContentText("Quit or continue? (All your current process will be lost if you quit)");
+		ButtonType buttonTypeOne = new ButtonType("Quit");
+		ButtonType buttonTypeTwo = new ButtonType("Continue");
+
+		alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == buttonTypeOne){
+			toMainMenu();
+
+		} else {
+			start();
+			mediaPlayer.play();
+		}
+	}
+
 	public void popupResult(){
+		int total_score = 0;
+		int bonus = frog.getLifes()* 50;
+		for(int i = 0; i<scores.size();i++){
+			total_score += scores.get(i);
+		}
+		total_score += bonus;
 		TextInputDialog inputDialog = new TextInputDialog("name");
 		inputDialog.setTitle("Congratulation!");
-		inputDialog.setHeaderText("Let's see if you in the leaderboard!");
+		inputDialog.setHeaderText("Remaining life bonus:"+ bonus +"\nTotal score after bonus: "+total_score +"\nLet's see if you in the leaderboard!");
 		inputDialog.setContentText("Enter your player name:");
 		Optional<String> result = inputDialog.showAndWait();
 		if (result.isPresent()) {
@@ -242,7 +302,7 @@ public class GameStage extends World {
 			String date = dtf.format(localDate);
 
 			leaderBoard = new LeaderBoard();
-			leaderBoard.insertNewRecord(result.get(), date ,frog.getPoints());
+			leaderBoard.insertNewRecord(result.get(), date ,total_score);
 		}
 	}
 
@@ -252,34 +312,24 @@ public class GameStage extends World {
 	}
 
 	public void setPointsNumber(int n) {
-		int shift = 0;
-		while (n > 0) {
-			int d = n / 10;
-			int k = n - d * 10;
-			n = d;
-			add(new Digit(k, 30, 525 - shift, 35));
-			shift+=23;
-		}
+		int k = n % 10;
+		n = n / 10;
+		scoreOnes.changeImage(k);
+		k = n % 10;
+		n = n /10;
+		scoreTens.changeImage(k);
+		scoreHundreds.changeImage(n);
 	}
 	public void setLifesNumber(int n){
-		int shift = 0;
-		while (n > 0) {
-			int d = n / 10;
-			int k = n - d * 10;
-			n = d;
-			add(new Digit(k, 30, 75 - shift, 755));
-			shift+=23;
-		}
+		lifeOnes.changeImage(n%10);
+		lifeTens.changeImage(n/10);
 	}
 
+
 	public void setRoundNum(int n){
-		int shift = 0;
-		while (n > 0) {
-			int d = n / 10;
-			int k = n - d * 10;
-			n = d;
-			add(new Digit(k, 40, 330 - shift, 33,'w'));
-			shift+=25;
+		roundnumOnes.changeImage(n % 10);
+		if(n==10) {
+			add(new Digit(1, 40, 313, 35, 'w'));
 		}
 
 	}
@@ -319,4 +369,5 @@ public class GameStage extends World {
 		quickcar1.setSpeed(-5 + -0.5*scores.size());
 		quickcar2.setSpeed(4 + 0.3*scores.size());
 	}
+
 }

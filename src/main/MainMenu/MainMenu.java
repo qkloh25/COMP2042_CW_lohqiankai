@@ -1,5 +1,6 @@
 package main.MainMenu;
 
+import main.LeaderBoard.LeaderBoard;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -19,26 +20,28 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import main.World.GameStage;
 import main.Main;
+import main.World.GameStage;
+
 
 import java.io.File;
 
 public class MainMenu extends Parent {
+    public static final String FILE_SRC_AUDIOS = "src/res/audios/";
+    public static final String FILE_SRC_PICS = "file:src/res/pics/";
     GameStage gameStage;
     Scene gameScene;
     MediaPlayer mediaPlayer;
     public MainMenu(Stage primaryStage){
         int offset = 500;
-        ImageView logo = new ImageView(new Image("file:src/pics/frogger-logo.png", 300, 300, true, true));
+        ImageView logo = new ImageView(new Image(FILE_SRC_PICS + "frogger-logo.png", 300, 300, true, true));
         logo.setTranslateX(140);
         logo.setTranslateY(20);
 
         VBox menu0 = new VBox(10);
-        menu0.setTranslateX(170);
+        menu0.setTranslateX(145);
         menu0.setTranslateY(250);
 
         VBox menu1 = new VBox(10);
@@ -95,7 +98,7 @@ public class MainMenu extends Parent {
             tt.setToX(menu1.getTranslateX() - offset);
 
             TranslateTransition tt1 = new TranslateTransition(Duration.seconds(0.5), menu0);
-            tt1.setToX(170);
+            tt1.setToX(145);
 
 
             tt.play();
@@ -104,7 +107,7 @@ public class MainMenu extends Parent {
         });
 
         StackPane InstructionView = new StackPane();
-        Text insturctions = new Text(50,50,"" +
+        Text instructions = new Text(50,50,"" +
                 "1.There are totally 10 rounds.\n\n" +
                 "2.Each round with 5 destinations.\n\n" +
                 "3.Reach all 5 destinations, we proceed to the next round.\n\n" +
@@ -116,10 +119,8 @@ public class MainMenu extends Parent {
                 "9.Try your best to make your name on LEADERBOARD!\n\n" +
                 "10.Good Luck and have Fun!");
 
-        Font font = new Font("Serif",20);
-
-        insturctions.setFont(font);
-        insturctions.setFill(Color.WHITE);
+        instructions.setFont(Font.loadFont(FILE_SRC_PICS + "Minecraft.ttf", 18));
+        instructions.setFill(Color.WHITE);
 
 
         Rectangle bg = new Rectangle(500,500);
@@ -128,7 +129,7 @@ public class MainMenu extends Parent {
         bg.setEffect(new GaussianBlur(3.5));
 
 
-        InstructionView.getChildren().addAll(bg,insturctions);
+        InstructionView.getChildren().addAll(bg,instructions);
         menu1.getChildren().addAll(btnBack,InstructionView);
 //
 //        Rectangle bg = new Rectangle(565,800);
@@ -144,10 +145,10 @@ public class MainMenu extends Parent {
 
         public MenuButton(String name){
             text = new Text(name);
-            text.setFont(text.getFont().font(30));
+            text.setFont(Font.loadFont(FILE_SRC_PICS + "BACKTO1982.TTF", 25));
             text.setFill(Color.WHITE);
 
-            Rectangle bg = new Rectangle(250,100);
+            Rectangle bg = new Rectangle(300,100);
             bg.setOpacity(0.5);
             bg.setFill(Color.BLACK);
             bg.setEffect(new GaussianBlur(3.5));
@@ -157,7 +158,7 @@ public class MainMenu extends Parent {
 
 
             setOnMouseEntered(event->{
-                Media sound = new Media(new File("src/audios/Collect.wav").toURI().toString());
+                Media sound = new Media(new File(FILE_SRC_AUDIOS + "/Collect.wav").toURI().toString());
                 MediaPlayer mediaPlayer = new MediaPlayer(sound);
                 mediaPlayer.setCycleCount(1);
                 mediaPlayer.play();
@@ -165,7 +166,7 @@ public class MainMenu extends Parent {
                 text.setFill(Color.BLACK);
             });
             setOnMousePressed(event ->{
-                Media sound = new Media(new File("src/audios/mouseclick.mp3").toURI().toString());
+                Media sound = new Media(new File(FILE_SRC_AUDIOS + "/mouseclick.mp3").toURI().toString());
                 MediaPlayer mediaPlayer = new MediaPlayer(sound);
                 mediaPlayer.setCycleCount(1);
                 mediaPlayer.play();
@@ -191,7 +192,7 @@ public class MainMenu extends Parent {
 
     public Scene setupMainScene(){
         Pane mainPage = new Pane();
-        ImageView test = new ImageView(new Image("file:src/pics/original.gif", 565, 800, true, true));
+        ImageView test = new ImageView(new Image(FILE_SRC_PICS + "original.gif", 565, 800, true, true));
         test.setFitHeight(800);
         test.setFitWidth(565);
         mainPage.getChildren().addAll(test, this);
@@ -199,7 +200,7 @@ public class MainMenu extends Parent {
     }
 
     public void playMusic() {
-        String musicFile = "src/audios/maplestory.mp3";
+        String musicFile = FILE_SRC_AUDIOS + "maplestory.mp3";
         Media sound = new Media(new File(musicFile).toURI().toString());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);

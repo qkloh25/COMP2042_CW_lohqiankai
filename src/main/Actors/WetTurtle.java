@@ -3,6 +3,7 @@ package main.Actors;
 import javafx.scene.image.Image;
 
 public class WetTurtle extends Actor implements movingCarrier {
+	public static final String FILE_SRC_PICS = "file:src/res/pics/";
 	Image turtle1;
 	Image turtle2;
 	Image turtle3;
@@ -38,10 +39,10 @@ public class WetTurtle extends Actor implements movingCarrier {
 			setX(600);
 	}
 	public WetTurtle(int xpos, int ypos, int s, int w, int h) {
-		turtle1 = new Image("file:src/pics/TurtleAnimation1.png", w, h, true, true);
-		turtle2 = new Image("file:src/pics/TurtleAnimation2Wet.png", w, h, true, true);
-		turtle3 = new Image("file:src/pics/TurtleAnimation3Wet.png", w, h, true, true);
-		turtle4 = new Image("file:src/pics/TurtleAnimation4Wet.png", w, h, true, true);
+		turtle1 = new Image(FILE_SRC_PICS + "TurtleAnimation1.png", w, h, true, true);
+		turtle2 = new Image(FILE_SRC_PICS + "TurtleAnimation2Wet.png", w, h, true, true);
+		turtle3 = new Image(FILE_SRC_PICS + "TurtleAnimation3Wet.png", w, h, true, true);
+		turtle4 = new Image(FILE_SRC_PICS + "TurtleAnimation4Wet.png", w, h, true, true);
 		setX(xpos);
 		setY(ypos);
 		speed = s;
