@@ -1,12 +1,14 @@
 # Refactoring
 ### File Management
 Separate the src codes with external resources like image and audios. Also separate the codes according to their usage.
-- Why: The files are all mixed, hard to manage and locate as the project grows big.
+- Why: 
+    - The files are all mixed, hard to manage and locate as the project grows big.
 - Where: all of them.
 ---
 ### Value Correction
 Modify some hard coded value to more reasonable value to resize.
-- Why: Many size and the coordination of image is wrongly placed.
+- Why: 
+    - Many size and the coordination of image is wrongly placed.
 - Where:
     - Animal.java
     - Log.java
@@ -17,7 +19,8 @@ Edit the provided also produced some extra image for the game.
 - Why: 
     - The color of the image is not matching the background.
     - New image need to be produced for new scenario.
-- Where: "src/res/pics/"
+- Where: 
+    - src/res/pics/
 ---
 ### Frog movement control
 Make a lock for signal of the key release.
@@ -29,7 +32,7 @@ Make a lock for signal of the key release.
 ### Intersecting between Actors
 Changed getIntersectingObjects() function to more efficient. This will increase the performance and responsiveness of the frog.
 - Why:
-    The program run slows.
+    - The program run slows.
 - Where:
     - Animal.java
     - Actor.java
