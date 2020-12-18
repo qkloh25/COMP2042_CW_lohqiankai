@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_comp2042_cw_lohqiankai" default="compile.module.comp2042_cw_lohqiankai">
+  <dirname property="module.comp2042_cw_lohqiankai.basedir" file="${ant.file.module_comp2042_cw_lohqiankai}"/>
+  
+  <property name="module.jdk.home.comp2042_cw_lohqiankai" value="${jdk.home.15}"/>
+  <property name="module.jdk.bin.comp2042_cw_lohqiankai" value="${jdk.bin.15}"/>
+  <property name="module.jdk.classpath.comp2042_cw_lohqiankai" value="jdk.classpath.15"/>
+  
+  <property name="compiler.args.comp2042_cw_lohqiankai" value="-encoding UTF-8 -source 15 -target 15 ${compiler.args}"/>
+  
+  <property name="comp2042_cw_lohqiankai.output.dir" value="${module.comp2042_cw_lohqiankai.basedir}/out/production/COMP2042_CW_lohqiankai"/>
+  <property name="comp2042_cw_lohqiankai.testoutput.dir" value="${module.comp2042_cw_lohqiankai.basedir}/out/test/COMP2042_CW_lohqiankai"/>
+  
+  <path id="comp2042_cw_lohqiankai.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="comp2042_cw_lohqiankai.module.production.classpath">
+    <path refid="${module.jdk.classpath.comp2042_cw_lohqiankai}"/>
+    <path refid="library.javafx_15.classpath"/>
+  </path>
+  
+  <path id="comp2042_cw_lohqiankai.runtime.production.module.classpath">
+    <pathelement location="${comp2042_cw_lohqiankai.output.dir}"/>
+    <path refid="library.javafx_15.classpath"/>
+  </path>
+  
+  <path id="comp2042_cw_lohqiankai.module.classpath">
+    <path refid="${module.jdk.classpath.comp2042_cw_lohqiankai}"/>
+    <pathelement location="${comp2042_cw_lohqiankai.output.dir}"/>
+    <path refid="library.javafx_15.classpath"/>
+    <pathelement location="${path.variable.maven_repository}/junit/junit/4.12/junit-4.12.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+  </path>
+  
+  <path id="comp2042_cw_lohqiankai.runtime.module.classpath">
+    <pathelement location="${comp2042_cw_lohqiankai.testoutput.dir}"/>
+    <pathelement location="${comp2042_cw_lohqiankai.output.dir}"/>
+    <path refid="library.javafx_15.classpath"/>
+    <pathelement location="${path.variable.maven_repository}/junit/junit/4.12/junit-4.12.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.comp2042_cw_lohqiankai">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.comp2042_cw_lohqiankai">
+    <patternset refid="excluded.from.module.comp2042_cw_lohqiankai"/>
+  </patternset>
+  
+  <path id="comp2042_cw_lohqiankai.module.sourcepath">
+    <dirset dir="${module.comp2042_cw_lohqiankai.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.comp2042_cw_lohqiankai" depends="compile.module.comp2042_cw_lohqiankai.production,compile.module.comp2042_cw_lohqiankai.tests" description="Compile module COMP2042_CW_lohqiankai"/>
+  
+  <target name="compile.module.comp2042_cw_lohqiankai.production" depends="register.custom.compilers" description="Compile module COMP2042_CW_lohqiankai; production classes">
+    <mkdir dir="${comp2042_cw_lohqiankai.output.dir}"/>
+    <javac2 destdir="${comp2042_cw_lohqiankai.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.comp2042_cw_lohqiankai}/javac">
+      <compilerarg line="${compiler.args.comp2042_cw_lohqiankai}"/>
+      <bootclasspath refid="comp2042_cw_lohqiankai.module.bootclasspath"/>
+      <classpath refid="comp2042_cw_lohqiankai.module.production.classpath"/>
+      <src refid="comp2042_cw_lohqiankai.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.comp2042_cw_lohqiankai"/>
+    </javac2>
+    
+    <copy todir="${comp2042_cw_lohqiankai.output.dir}">
+      <fileset dir="${module.comp2042_cw_lohqiankai.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.comp2042_cw_lohqiankai.tests" depends="register.custom.compilers,compile.module.comp2042_cw_lohqiankai.production" description="compile module COMP2042_CW_lohqiankai; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.comp2042_cw_lohqiankai" description="cleanup module">
+    <delete dir="${comp2042_cw_lohqiankai.output.dir}"/>
+    <delete dir="${comp2042_cw_lohqiankai.testoutput.dir}"/>
+  </target>
+</project>
