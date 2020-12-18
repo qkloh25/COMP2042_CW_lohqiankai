@@ -2,6 +2,9 @@ package main.Actors;
 
 import javafx.scene.image.Image;
 
+/**
+ * The turtle that is not swimming underwater.
+ */
 public class Turtle extends Actor implements movingCarrier {
 	public static final String FILE_SRC_PICS = "file:src/res/pics/";
 	Image turtle1;

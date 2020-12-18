@@ -2,6 +2,9 @@ package main.Actors;
 
 import javafx.scene.image.Image;
 
+/**
+ * The turtles that swim underwater constantly.
+ */
 public class WetTurtle extends Actor implements movingCarrier {
 	public static final String FILE_SRC_PICS = "file:src/res/pics/";
 	Image turtle1;
@@ -48,6 +51,11 @@ public class WetTurtle extends Actor implements movingCarrier {
 		speed = s;
 		setImage(turtle2);
 	}
+
+	/**
+	 *
+	 * @return true if the turtle is sunk.
+	 */
 	public boolean isSunk() {
 		return sunk;
 	}
@@ -55,6 +63,11 @@ public class WetTurtle extends Actor implements movingCarrier {
 	public double getSpeed(){
 		return speed;
 	}
+
+	/**
+	 * set the spped for more difficulty.
+	 * @param speed
+	 */
 	public void setSpeed(double speed){
 		this.speed = speed;
 	}

@@ -14,6 +14,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+/**
+ * The main character animal frog.
+ */
 public class Animal extends Actor {
 	public static final String resourcePathPics = "file:src/res/pics/";
 	public static final String resourcePathAudios = "src/res/audios/";
@@ -137,6 +140,11 @@ public class Animal extends Actor {
 
 		});
 	}
+
+	/**
+	 * The action of the animal as time go by.
+	 * @param now the time.
+	 */
 
 	@Override
 	public void act(long now) {
@@ -262,20 +270,47 @@ public class Animal extends Actor {
 		}
 	}
 
+	/**
+	 * Send signal if the animal achieve all 5 destination.
+	 * @return true if mission completed.
+	 */
 	public boolean getStop() {
 		return end==5;
 	}
+
+	/**
+	 *  Send signal if animal die more than he should.
+	 * @return true if die more than lifes.
+	 */
 	public boolean GameOver(){ return lifes==0;}
+
+	/**
+	 * reset the End count for next round.
+	 */
 	public void resetEnd(){
 		end = 0;
 	}
 
+	/**
+	 * return points of that round
+	 * @return points.
+	 */
+
 	public int getPoints() {
 		return points;
 	}
+
+	/**
+	 * reset point for next round.
+	 */
 	public void resetPoints(){
 		points = 0;
 	}
+
+	/**
+	 *
+	 * @return life counts of the frog.
+	 */
 	public int getLifes(){return lifes;}
 	public boolean changeScore() {
 		if (changeScore) {
@@ -285,6 +320,9 @@ public class Animal extends Actor {
 		return false;
 	}
 
+	/**
+	 * play the scoring music!
+	 */
 	public void playScoreSound(){
 		String musicFile = resourcePathAudios +"score.mp3";
 		Media sound = new Media(new File(musicFile).toURI().toString());
@@ -294,6 +332,10 @@ public class Animal extends Actor {
 
 	}
 
+	/**
+	 * if life is increase or decrease, returns true.
+	 * @return
+	 */
 	public boolean changeLife(){
 		if(changeLife){
 			changeLife = false;
@@ -302,6 +344,9 @@ public class Animal extends Actor {
 		return false;
 	}
 
+	/**
+	 * Just to avoid the key press of last round effect the next round.
+	 */
 	public void resetSeonds(){
 		secondA=false;
 		secondD=false;

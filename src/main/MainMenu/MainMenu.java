@@ -28,6 +28,9 @@ import main.World.GameStage;
 
 import java.io.File;
 
+/**
+ * The Main Menu.
+ */
 public class MainMenu extends Parent {
     public static final String FILE_SRC_AUDIOS = "src/res/audios/";
     public static final String FILE_SRC_PICS = "file:src/res/pics/";
@@ -140,6 +143,9 @@ public class MainMenu extends Parent {
 
     }
 
+    /**
+     * The Menu Button used by every button in the Main Menu in same format.
+     */
     public class MenuButton extends StackPane {
         private Text text;
 
@@ -184,11 +190,20 @@ public class MainMenu extends Parent {
         }
     }
 
-
+    /**
+     *
+     * @return scene of LeaderBoard
+     * @throws Exception
+     */
     public Scene loadLeaderBoard() throws Exception {
         Parent root = FXMLLoader.load(Main.class.getResource("LeaderBoard/LeaderBoard.fxml"));
         return new Scene(root,565,800);
     }
+
+    /**
+     *
+     * @return Scene of MainMenu
+     */
 
     public Scene setupMainScene(){
         Pane mainPage = new Pane();
@@ -199,6 +214,9 @@ public class MainMenu extends Parent {
         return new Scene(mainPage, 565,800);
     }
 
+    /**
+     * Play theme song.
+     */
     public void playMusic() {
         String musicFile = FILE_SRC_AUDIOS + "maplestory.mp3";
         Media sound = new Media(new File(musicFile).toURI().toString());
@@ -207,6 +225,10 @@ public class MainMenu extends Parent {
         mediaPlayer.play();
         mediaPlayer.setVolume(0.5);
     }
+
+    /**
+     * Stop theme song.
+     */
     public void stopMusic() {
         mediaPlayer.stop();
     }

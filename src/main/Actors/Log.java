@@ -2,6 +2,9 @@ package main.Actors;
 
 import javafx.scene.image.Image;
 
+/**
+ * The log on rivers.
+ */
 public class Log extends Actor implements movingCarrier {
 	private double speed;
 	@Override

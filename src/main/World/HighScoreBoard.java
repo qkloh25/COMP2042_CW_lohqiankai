@@ -10,6 +10,9 @@ import main.Actors.Digit;
 
 import java.util.*;
 
+/**
+ * The highscore board that blink out after every round.
+ */
 public class HighScoreBoard extends Pane {
     public static final String FILE_SRC_PICS = "file:src/res/pics/";
 

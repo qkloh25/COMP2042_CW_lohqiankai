@@ -4,6 +4,9 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * The leaderboard.
+ */
 public class LeaderBoard {
     final private String path="src/main/LeaderBoard/LeaderBoard.csv";
     private static Scanner scanner;
@@ -18,6 +21,11 @@ public class LeaderBoard {
             e.printStackTrace();
         }
     }
+
+    /**
+     * laod the data in text file.
+     * @throws FileNotFoundException
+     */
     public void loadDatafromFile() throws FileNotFoundException {
         scanner = new Scanner(new File(path));
         scanner.useDelimiter("[,\n]");
@@ -35,6 +43,12 @@ public class LeaderBoard {
         scanner.close();
     }
 
+    /**
+     * Insert the new data into the permanent list.
+     * @param newName
+     * @param newDate
+     * @param newScore
+     */
     public void insertNewRecord(String newName, String newDate,int newScore){
         File oldFile = new File(path);
         String tempFile = "src/main/LeaderBoard/temp.csv";

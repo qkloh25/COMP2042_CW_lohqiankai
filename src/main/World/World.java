@@ -13,7 +13,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import main.Actors.Actor;
 
-
+/**
+ * The world, mainly use to control world timer, and contains actors as its children.
+ */
 public abstract class World extends Pane {
     private AnimationTimer timer;
     
@@ -54,6 +56,10 @@ public abstract class World extends Pane {
 		});
     }
 
+    /**
+     * A timer that ask the actors to move.
+     */
+
     public void createTimer() {
         timer = new AnimationTimer() {
             @Override
@@ -68,22 +74,43 @@ public abstract class World extends Pane {
         };
     }
 
+    /**
+     * Start the timer.
+     */
+
     public void start() {
         timer.start();
     }
 
+    /**
+     * Stop the timer.
+     */
     public void stop() {
         timer.stop();
     }
-    
+
+    /**
+     * Add the actor to this world.
+     * @param actor
+     */
     public void add(Actor actor) {
         getChildren().add(actor);
     }
+
+    /**
+     * Remove specific actor from this world.
+     * @param actor
+     */
 
     public void remove(Actor actor) {
         getChildren().remove(actor);
     }
 
+    /**
+     * Return an array of object that is the children of this world for specified class.
+     * @param cls
+     * @return the array with required class.
+     */
     public  List<Node> getObjects(Class cls) {
         ArrayList<Node> someArray = new ArrayList<>();
         for (Node n: getChildren()) {

@@ -2,6 +2,9 @@ package main.Actors;
 
 import javafx.scene.image.Image;
 
+/**
+ * Digits, to show the value.
+ */
 public class Digit extends Actor {
 	public static final String FILE_SRC_PICS = "file:src/res/pics/";
 	int dim;
@@ -37,6 +40,11 @@ public class Digit extends Actor {
 		setX(x);
 		setY(y);
 	}
+
+	/**
+	 * Change image to the desired value.
+	 * @param n the desired value.
+	 */
 	public void changeImage(int n){
 		im1 = new Image(FILE_SRC_PICS + color+ n + ".png", dim, dim, true, true);
 		setImage(im1);

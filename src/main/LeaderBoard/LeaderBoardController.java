@@ -88,6 +88,10 @@ public class LeaderBoardController implements Initializable {
 //           }}
     }
 
+    /**
+     * goes to Scene MainMenu
+     * @param event
+     */
     public void toMainMenu(ActionEvent event){
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         Scene mainScene = mainMenu.setupMainScene();

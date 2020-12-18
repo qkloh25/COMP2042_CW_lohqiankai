@@ -22,6 +22,9 @@ import main.LeaderBoard.LeaderBoard;
 import main.Main;
 import main.MainMenu.MainMenu;
 
+/**
+ * The Game Scenario. Control the game settings.
+ */
 public class GameStage extends World {
 	public final static int NUM_OF_ROUNDS = 10;
 	public static final String FILE_SRC_PICS = "file:src/res/pics/";
@@ -155,6 +158,9 @@ public class GameStage extends World {
 		return new Scene(this,565,800);
 	}
 
+	/**
+	 * Play gaming music.
+	 */
 	public void playMusic() {
 		String musicFile = "src/res/audios/Gaming.mp3";
 		Media sound = new Media(new File(musicFile).toURI().toString());
@@ -164,6 +170,9 @@ public class GameStage extends World {
 		mediaPlayer.setVolume(0.2);
 	}
 
+	/**
+	 * Stop gaming music.
+	 */
 	public void stopMusic() {
 		mediaPlayer.stop();
 	}
@@ -251,17 +260,27 @@ public class GameStage extends World {
 			}
 		};
 	}
+
+	/**
+	 * Start the game timer.
+	 */
 	public void start() {
 		createTimer();
 		super.start();
 		timer.start();
 	}
 
+	/**
+	 * Stop the game timer.
+	 */
 	public void STOP() {
 		super.stop();
 		timer.stop();
 	}
 
+	/**
+	 * Pause the game timer.
+	 */
 	public void pause(){
 		STOP();
 		mediaPlayer.pause();
@@ -284,6 +303,9 @@ public class GameStage extends World {
 		}
 	}
 
+	/**
+	 * Popup the final result.
+	 */
 	public void popupResult(){
 		int total_score = 0;
 		int bonus = frog.getLifes()* 50;
@@ -311,6 +333,10 @@ public class GameStage extends World {
 		primaryStage.setScene(mainScene);
 	}
 
+	/**
+	 * Renew the points number shown.
+	 * @param n points
+	 */
 	public void setPointsNumber(int n) {
 		int k = n % 10;
 		n = n / 10;
@@ -320,12 +346,20 @@ public class GameStage extends World {
 		scoreTens.changeImage(k);
 		scoreHundreds.changeImage(n);
 	}
+
+	/**
+	 * Renew the Lifes Number shown.
+	 * @param n lifes
+	 */
 	public void setLifesNumber(int n){
 		lifeOnes.changeImage(n%10);
 		lifeTens.changeImage(n/10);
 	}
 
-
+	/**
+	 * Renew the round numeber.
+	 * @param n round numnber.
+	 */
 	public void setRoundNum(int n){
 		roundnumOnes.changeImage(n % 10);
 		if(n==10) {
@@ -333,6 +367,10 @@ public class GameStage extends World {
 		}
 
 	}
+
+	/**
+	 * Reset all the destinations for the next round.
+	 */
 	public void resetEnd(){
 		End1.reset();
 		End2.reset();
@@ -341,6 +379,9 @@ public class GameStage extends World {
 		End5.reset();
 	}
 
+	/**
+	 * Increase the speed of actors in each round by using round number.
+	 */
 	public void increaseDifficultyBySpeed(){
 		Log1.setSpeed(-2 + -0.3*scores.size());
 		Log2.setSpeed(-2 + -0.3*scores.size());

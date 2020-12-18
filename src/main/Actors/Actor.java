@@ -50,6 +50,11 @@ public abstract class Actor extends ImageView{
         return this.getBoundsInLocal().getHeight();
     }
 
+    /**
+     * To know if the actor intersecting an object belong to a specific class.
+     * @param cls
+     * @return array of the intersecting object of class cls
+     */
     public java.util.List<Node> getIntersectingObjects(Class cls){
         ArrayList<Node> someArray = new ArrayList<Node>();
         for (Node actor: getWorld().getObjects(cls)) {
